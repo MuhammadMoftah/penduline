@@ -1,0 +1,203 @@
+/* Manrope font  */
+
+:root {
+  --appFont: "Manrope", sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Manrope font  */
+  @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+  /* tajwal font */
+  @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+  html {
+    font-family: var(--appFont);
+    @apply bg-body !important;
+  }
+
+  button,
+  a,
+  select {
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+
+  .theme-shadow {
+    box-shadow: 0px 4px 32px rgb(0 0 0 / 8%);
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+  }
+  .theme-shadow2 {
+    box-shadow: 0px 1px 20px rgb(0 0 0 / 8%);
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+  }
+
+  /* fix collapse arrow  */
+  .collapse-arrow .collapse-title:after {
+    @apply rtl:right-auto rtl:left-4;
+  }
+}
+@layer components {
+  .btn {
+    @apply text-white border-none;
+  }
+  .theme-btn {
+    @apply w-full h-12 text-sm font-semibold text-center text-white uppercase rounded-md ltr:tracking-widest bg-gradient-to-r from-theme0 to-theme1;
+  }
+}
+
+.container {
+  max-width: 1280px;
+}
+
+.click-scale {
+  @apply duration-300 active:scale-95 active:brightness-125;
+}
+
+/* scrollbar chrome  */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(221, 221, 221);
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  @apply bg-theme1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-theme2;
+}
+
+/* hide number input arrow  */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ===== Animations ===== */
+/* slidefade  */
+.slide-fade-enter-active {
+  transition: all 0.2s ease-in-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.1s ease-in-out;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* slide-in */
+.slide-in-move {
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+.slide-in-leave-active {
+  transition: opacity 0.3s ease-out,
+    transform 0.3s cubic-bezier(0.5, 0, 0.7, 0.4);
+  transition-delay: calc(0.1s * (var(--total) - var(--i)));
+}
+.slide-in-enter-active {
+  transition: opacity 0.3s ease-out,
+    transform 0.3s cubic-bezier(0.2, 0.5, 0.1, 1);
+  transition-delay: calc(0.1s * var(--i));
+}
+.slide-in-enter,
+.slide-in-leave-to {
+  opacity: 0;
+}
+.slide-in-enter {
+  transform: translateX(-1em);
+}
+.slide-in-leave-to {
+  transform: translateX(1em);
+}
+
+/* slide-in2 */
+.slide-in2-move {
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+.slide-in2-leave-active {
+  transition: opacity 0.1s ease-out,
+    transform 0.1s cubic-bezier(0.5, 0, 0.7, 0.4);
+  transition-delay: calc(0.1s * (var(--total) - var(--i)));
+}
+.slide-in2-enter-active {
+  transition: opacity 0.3s ease-out,
+    transform 0.3s cubic-bezier(0.2, 0.5, 0.1, 1);
+  transition-delay: calc(0.1s * var(--i));
+}
+.slide-in2-enter,
+.slide-in2-leave-to {
+  opacity: 0;
+}
+.slide-in2-enter {
+  transform: translateX(1em);
+}
+.slide-in2-leave-to {
+  transform: translateX(-1em);
+}
+
+/* slide-in-Y */
+.slide-in-Y-move {
+  transition: opacity 0.1s ease-out, transform 0.3s ease-out;
+}
+.slide-in-Y-leave-active {
+  transition: opacity 0.1s ease-out,
+    transform 0.2s cubic-bezier(0.5, 0, 0.7, 0.4);
+  transition-delay: calc(0.1s * (var(--total) - var(--i)));
+}
+.slide-in-Y-enter-active {
+  transition: opacity 0.1s ease-out,
+    transform 0.2s cubic-bezier(0.2, 0.5, 0.1, 1);
+  transition-delay: calc(0.1s * var(--i));
+}
+.slide-in-Y-enter,
+.slide-in-Y-leave-to {
+  opacity: 0.4;
+}
+.slide-in-Y-enter {
+  transform: translateY(5em);
+}
+.slide-in-Y-leave-to {
+  transform: translateY(5em);
+}
+
+/* Daisyui loading */
+.btn.loading:before {
+  @apply rtl:ml-2;
+}
+
+/* toasted style  */
+.toasted {
+  @apply py-5 text-base font-medium rounded-lg !important;
+}
