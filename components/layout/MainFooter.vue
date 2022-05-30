@@ -1,5 +1,5 @@
 <template>
-  <footer class="from-theme0 to-theme2 bg-gradient-to-r">
+  <footer class="mt-32 from-theme0 to-theme2 bg-gradient-to-r">
     <!-- upper footer  -->
     <div class="container grid grid-cols-1 py-16 space-y-16 lg:space-y-0 lg:grid-cols-5">
       <div class="flex flex-col justify-between col-span-2 mt-1 h-52">
