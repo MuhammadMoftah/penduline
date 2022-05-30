@@ -1,4 +1,8 @@
-/* Manrope font  */
+  /* Manrope font  */
+  @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+  /* tajwal font */
+  @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
 
 :root {
   --appFont: "Manrope", sans-serif;
@@ -9,11 +13,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* Manrope font  */
-  @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 
-  /* tajwal font */
-  @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
   html {
     font-family: var(--appFont);
     @apply bg-body !important;
