@@ -39,6 +39,24 @@
   .theme-btn {
     @apply w-full h-12 text-sm font-semibold text-center text-white uppercase rounded-md ltr:tracking-widest bg-gradient-to-r from-theme0 to-theme1;
   }
+
+  /* slick slider  */
+  .slick-list {
+    /* @apply -mx-1; */
+    /* @apply px-4 py-10 -mx-4 pb-7; */
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-top: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1.75rem;
+  }
+
+  /* the slides */
+  .slick-slide {
+    /* @apply pr-6; */
+    padding-right: 1.5rem;
+  }
 }
 
 html {
@@ -193,22 +211,4 @@ input[type="number"] {
 /* toasted style  */
 .toasted {
   @apply py-5 text-base font-medium rounded-lg !important;
-}
-
-/* slick slider  */
-.slick-list {
-  /* @apply -mx-1; */
-  /* @apply px-4 py-10 -mx-4 pb-7; */
-  margin-left: -1rem;
-  margin-right: -1rem;
-  padding-top: 2.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1.75rem;
-}
-
-/* the slides */
-.slick-slide {
-  /* @apply pr-6; */
-  padding-right: 1.5rem;
 }
