@@ -39,6 +39,8 @@
   .theme-btn {
     @apply w-full h-12 text-sm font-semibold text-center text-white uppercase rounded-md ltr:tracking-widest bg-gradient-to-r from-theme0 to-theme1;
   }
+
+ 
 }
 
 html {

@@ -84,4 +84,5 @@ export default {
 >>> .slick-slide {
   @apply pr-6 !important;
 }
+
 </style>
