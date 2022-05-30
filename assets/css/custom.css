@@ -14,10 +14,7 @@
 
 @layer base {
 
-  html {
-    font-family: var(--appFont);
-    @apply bg-body !important;
-  }
+ 
 
   button,
   a,
@@ -51,6 +48,11 @@
   .theme-btn {
     @apply w-full h-12 text-sm font-semibold text-center text-white uppercase rounded-md ltr:tracking-widest bg-gradient-to-r from-theme0 to-theme1;
   }
+}
+
+html {
+  font-family: var(--appFont);
+  @apply bg-body !important;
 }
 
 .container {
