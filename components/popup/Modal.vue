@@ -21,7 +21,7 @@
         <!-- title -->
         <div class="flex flex-col items-center justify-center">
           <h5
-            class="mb-1 text-3xl italic font-bold capitalize text-slate-800"
+            class="mb-1 text-3xl font-bold capitalize text-slate-800"
             v-if="title"
           >{{title}}</h5>
           <p class="text-sm font-semibold capitalize text-slate-500" v-if="subtitle">{{subtitle}}</p>
