@@ -74,14 +74,5 @@ export default {
 </script>
 
 <style scoped >
-/* the parent */
->>> .slick-list {
-  /* @apply -mx-1; */
-  @apply pb-7 py-10 -mx-4 px-4;
-}
 
-/* the slides */
->>> .slick-slide {
-  @apply pr-6;
-}
 </style>
