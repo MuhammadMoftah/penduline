@@ -69,7 +69,7 @@
     </div>
     <span
       v-if="discount"
-      class="absolute h-6 px-2 py-1 text-xs font-semibold text-white rounded-lg top-4 rtl:left-4 ltr:right-4 bg-theme1"
+      class="absolute h-6 px-2 py-1 text-xs font-semibold text-white rounded-lg top-4 rtl:left-4 rtl:right-[unset] ltr:right-4 bg-theme1"
     >- 10%</span>
   </div>
 </template>
