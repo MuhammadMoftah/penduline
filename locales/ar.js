@@ -157,5 +157,12 @@ export default {
   discounts: "الخصومات",
   more_details: "تفاصيل اكثر",
   hero_product: "المنتح المميز",
+  pos_section: "متواجدون في",
+  our_products: "منتجاتنا",
+  explore: "تصفح",
+  awards_we_got: "الجوائز المحصلة",
+  scratch_step1: "اختر منتجك من صفحة خربش واكسب",
+  scratch_step2: "املئ الحقل الخاص بالكود الذي يوجد في خلف المنتج",
+  scratch_step3: "الان انت تملك النقاط المجانيا، استمتع!",
   key: "",
 };

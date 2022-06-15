@@ -37,6 +37,7 @@
           target="_blank"
           :href="link"
           class="flex items-center p-3 mt-24 duration-200 bg-white rounded-full shadow cursor-pointer hover:scale-95"
+          slot="button"
         >
           <button class="p-2 rounded-full bg-theme1">
             <PlayArrowIcon class="w-6 h-6 text-white" />

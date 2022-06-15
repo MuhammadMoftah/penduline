@@ -25,7 +25,7 @@
           <button
             class="flex theme-btn btn"
             :disabled="contactUs"
-            :class="mixLoading ? 'loading': ''"
+            :class="loading ? 'loading': ''"
           >{{$t("submit")}}</button>
         </div>
       </form>
@@ -43,14 +43,15 @@ export default {
     return {
       name: "",
       file: "",
+      loading: false,
     };
   },
   methods: {
     done() {
-      this.mixLoading = true;
+      this.loading = true;
       setTimeout(() => {
         this.$successHandler("We have added your child successfully", 3000);
-        this.mixLoading = false;
+        this.loading = false;
       }, 1500);
     },
   },

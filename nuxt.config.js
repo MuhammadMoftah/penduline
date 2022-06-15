@@ -8,22 +8,24 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" },
-    {
-      rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap",
-    },
-    {
-      rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap",
-    },],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.png" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap",
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["~assets/css/custom.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["~mixins/global"],
+  plugins: ["~mixins/global", { src: "~plugins/vue-carousel-3d", ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: ["~components", "~components/layout", "~components/icons"],

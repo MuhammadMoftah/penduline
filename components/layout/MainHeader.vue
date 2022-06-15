@@ -12,7 +12,7 @@
         <NuxtLink :to="localePath('/baby-mom')" class="duration-300">{{$t('baby_mom')}}</NuxtLink>
         <NuxtLink :to="localePath('/curly-hair')" class="duration-300">{{$t('curly_hair')}}</NuxtLink>
         <NuxtLink :to="localePath('/products')" class="duration-300">{{$t('products')}}</NuxtLink>
-        <NuxtLink :to="localePath('/gifts')" class="duration-300">{{$t('gifts')}}</NuxtLink>
+        <NuxtLink :to="localePath('/scratch-win')" class="duration-300">{{$t('scratch_win')}}</NuxtLink>
         <NuxtLink :to="localePath('/blogs')" class="duration-300">{{$t('blogs')}}</NuxtLink>
         <button
           type="button"

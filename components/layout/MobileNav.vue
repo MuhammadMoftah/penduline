@@ -19,7 +19,7 @@
           <button @click="navigateTo('/baby-mom')" class="font-semibold">{{$t('baby_mom')}}</button>
           <button @click="navigateTo('/curly-hair')" class="font-semibold">{{$t('curly_hair')}}</button>
           <button @click="navigateTo('/products')" class="font-semibold">{{$t('products')}}</button>
-          <button @click="navigateTo('/gifts')" class="font-semibold">{{$t('gifts')}}</button>
+          <button @click="navigateTo('/scratch-win')" class="font-semibold">{{$t('scratch_win')}}</button>
           <button @click="navigateTo('/blogs')" class="font-semibold">{{$t('blogs')}}</button>
 
           <button

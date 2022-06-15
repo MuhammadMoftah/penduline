@@ -27,7 +27,7 @@
         >{{$t('scratch_code_contact_us')}}</p>
 
         <div class="py-2">
-          <button class="theme-btn btn" :class="mixLoading ? 'loading' :''">{{$t("submit")}}</button>
+          <button class="theme-btn btn" :class="loading ? 'loading' :''">{{$t("submit")}}</button>
         </div>
       </form>
     </Modal>
@@ -43,14 +43,15 @@ export default {
   data() {
     return {
       contactUs: false,
+      loading: false,
       code: "",
     };
   },
   methods: {
     done() {
-      this.mixLoading = true;
+      this.loading = true;
       setTimeout(() => {
-        // this.mixLoading = false;
+        this.loading = false;
         this.$successHandler(
           `Congratulations You got the product for free, You have 568 Points left in your balance`,
           5000

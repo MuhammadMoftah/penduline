@@ -159,5 +159,12 @@ export default {
   discounts: "Discounts",
   more_details: "More details",
   hero_product: "Hero product",
+  pos_section: "POS section",
+  our_products: "our products",
+  explore: "explore",
+  awards_we_got: "awards we got",
+  scratch_step1: "Pick your product from scratch & win page",
+  scratch_step2: "Fill this input with the code at the back of your product",
+  scratch_step3: "Now you got the free points, Enjoy!",
   key: "",
 };

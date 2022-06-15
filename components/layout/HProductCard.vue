@@ -76,7 +76,7 @@ export default {
   methods: {
     routerHandler(id) {
       if (this.gift) {
-        this.$router.push(this.localePath("/gifts/23"));
+        this.$router.push(this.localePath("/scratch-win/23"));
         return;
       }
       this.$router.push(this.localePath("/products/23"));

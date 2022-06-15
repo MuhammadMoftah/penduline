@@ -5,15 +5,26 @@
       <HomeCover />
     </section>
 
+    <!-- about (awards & usb) -->
     <section class="mt-32">
-      <HomeArrivalSection />
+      <HomeAboutSection />
     </section>
 
     <section class="mt-32">
-      <HomeContactSection />
+      <HomeProductsSection />
     </section>
 
+    <!-- POS section  -->
     <section class="mt-32">
+      <HomePosSection />
+    </section>
+
+    <!-- scratch  section -->
+    <section class="mt-32">
+      <ScratchSection></ScratchSection>
+    </section>
+
+    <section class="mt-32" v-if="false">
       <BriefAndDetails :title="$t('about_penduline')" :desc="$t('penduline_info')">
         <div class="flex items-center justify-center">
           <NuxtLink
@@ -24,10 +35,6 @@
           >{{$t('about_penduline')}}</NuxtLink>
         </div>
       </BriefAndDetails>
-    </section>
-
-    <section class="mt-32">
-      <HomeGiftsSection />
     </section>
 
     <section class="mt-32">
