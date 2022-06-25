@@ -2,7 +2,7 @@ import Vue from "vue";
 var mixin = {
   data() {
     return {
-      // mixLoading: false,
+      mixLoader: false,
     };
   },
   methods: {

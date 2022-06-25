@@ -6,7 +6,7 @@
     <div class="container flex justify-between">
       <Logo class="w-20 lg:w-[120px] lg:min-w-[120px]" />
       <nav
-        class="items-center justify-between hidden w-full text-sm font-semibold capitalize lg:flex lg:px-20 text-slate-600"
+        class="items-center justify-between hidden w-full text-sm font-semibold capitalize lg:flex lg:px-16 text-slate-600"
       >
         <NuxtLink :to="localePath('/')" class="duration-300">{{$t('penduline_world')}}</NuxtLink>
         <NuxtLink :to="localePath('/baby-mom')" class="duration-300">{{$t('baby_mom')}}</NuxtLink>
@@ -22,7 +22,7 @@
         >English</button>
         <button class="font-semibold" v-else @click="switchLang('ar')">Arabic</button>
       </nav>
-      <aside class="flex items-center justify-around w-40">
+      <aside class="flex items-center justify-around w-full gap-3 shrink-[3]">
         <button type="button" class="indicator click-scale">
           <span
             class="border-none rounded-full h-4 px-1 badge badge-sm indicator-item bg-theme1 text-[10px] text-white"
@@ -32,9 +32,54 @@
             class="w-4 h-4 lg:w-5 lg:h-5 text-slate-600"
           />
         </button>
-        <button type="button" class="click-scale" @click="$store.commit('global/modal', 'login')">
+
+        <button
+          v-if="!$auth.user"
+          type="button"
+          class="click-scale"
+          @click="$store.commit('global/modal', 'login')"
+        >
           <UserIcon class="w-4 h-4 lg:w-5 lg:h-5 text-slate-600" />
         </button>
+
+        <div class="relative" v-else>
+          <button
+            type="button"
+            class="flex items-center gap-2 p-2 text-xs font-medium capitalize bg-transparent rounded-lg click-scale text-slate-600 hover:bg-slate-100"
+            @click="profileMenu = !profileMenu"
+          >
+            <img
+              v-if="$auth.user.avata"
+              :src="$auth.user.avatar"
+              class="object-cover w-10 h-10 rounded-full"
+              alt
+            />
+            <span v-else>
+              <UserIcon class="w-4 h-4 lg:w-5 lg:h-5 text-slate-600" />
+            </span>
+            <span>{{$auth.user.name}}</span>
+          </button>
+          <transition name="slide-in-Y">
+            <ul
+              v-if="profileMenu"
+              @mouseleave="profileMenu = false"
+              class="absolute w-56 p-2 font-semibold shadow-lg text-slate-600 menu-compact menu bg-base-100 rounded-box top-10 rtl:left-0 ltr:right-0 shadow-slate-300"
+            >
+              <li>
+                <a @click="$router.push(localePath('/profile')), profileMenu = false">
+                  <UserIcon class="w-4 h-4" />
+                  {{$t('profile')}}
+                </a>
+              </li>
+              <li class="text-red-500">
+                <a @click.prevent="$auth.logout()">
+                  <LogoutIcon class="w-4 h-4" />
+                  {{$t('logout')}}
+                </a>
+              </li>
+            </ul>
+          </transition>
+        </div>
 
         <button
           type="button"
@@ -53,6 +98,7 @@ export default {
   data() {
     return {
       scrolled: false,
+      profileMenu: false,
     };
   },
   mounted() {

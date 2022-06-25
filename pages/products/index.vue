@@ -17,7 +17,9 @@
         <div class="flex items-center justify-between mb-5">
           <h5 class="text-lg font-semibold capitalize text-slate-700">
             {{$t('products')}}
-            <span class="mx-4 text-xs text-slate-400">23 {{$t('product')}}</span>
+            <span
+              class="mx-4 text-xs text-slate-400"
+            >{{meta.total}} {{$t('product')}}</span>
           </h5>
 
           <nav class="flex">
@@ -40,13 +42,15 @@
         </div>
         <!-- grid view  -->
         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3" v-if="view == 'grid'">
-          <VProductCard :discount="n % 2 == 0 ? true : false" v-for="n in 10" :key="n" />
+          <VProductCard v-for="item in items" :key="item.id" :item="item" />
         </div>
 
         <!-- row view  -->
         <div class="grid grid-cols-1 gap-5" v-if="view == 'rows'">
-          <HProductCard :discount="n % 2 == 0 ? true : false" v-for="n in 10" :key="n" />
+          <HProductCard v-for="item in items" :key="item.id" :item="item" />
         </div>
+
+        <Pagination class="mt-16" :meta="meta" @goTo="goTo($event)" />
       </div>
     </section>
 
@@ -81,8 +85,33 @@ export default {
       view: "grid",
     };
   },
-  methods: {},
+  async fetch({ store, route }) {
+    const {
+      query: { page },
+    } = route;
+    //fetch products
+    await store.dispatch("products/getItems", page);
+  },
+  methods: {
+    goTo(page) {
+      this.$router.push(
+        this.localePath({
+          path: "/products",
+          query: { page },
+        })
+      );
+
+      this.$store.dispatch("products/getItems", page);
+    },
+  },
   computed: {
+    items() {
+      // get products
+      return this.$store.getters["products/items"];
+    },
+    meta() {
+      return this.$store.getters["products/meta"];
+    },
     filterSidebar() {
       return this.$store.state.products.filterSidebar;
     },

@@ -6,14 +6,14 @@
     <img
       class="object-contain h-56 mx-auto duration-300 cursor-pointer w-fit hover:brightness-105 hover:opacity-90"
       @click="routerHandler()"
-      src="~/static/shower.png"
+      :src="item.images ? item.images[0] : require('~/static/shower.png')"
       alt
     />
 
     <article class="flex flex-col justify-between h-36">
-      <p class="text-[#B7AC6C] text-sm font-semibold mt-2">REDEEM YOUR POINTS</p>
+      <p class="text-[#B7AC6C] text-sm font-semibold mt-2">{{$t('redem_your_code')}}</p>
       <aside>
-        <h5 class="font-semibold">Penduline Shower Gel</h5>
+        <h5 class="font-semibold">{{item.name}}</h5>
         <p
           class="overflow-hidden text-xs leading-[17px] text-slate-400 h-12"
           style="
@@ -21,12 +21,7 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
           "
-        >
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas at
-          tenetur similique, doloremque dicta cum veniam quia eligendi excepturi
-          obcaecati harum dolorum iste consequatur ut accusamus culpa.
-          Explicabo, ex voluptate!
-        </p>
+        >{{item.description? item.description: this.$t('lorem')}}</p>
       </aside>
 
       <p v-if="!gift" class="font-semibold">
@@ -34,9 +29,9 @@
         <span
           v-if="discount"
           class="mx-1 text-sm font-semibold line-through text-slate-400"
-        >115 {{$t('egp')}}</span>
+        >{{item.price ? item.price :'75'}} {{$t('egp')}}</span>
       </p>
-      <p v-else class="font-bold text-theme1">768 {{$t('points')}}</p>
+      <p v-else class="font-bold text-theme1">798 {{$t('points')}}</p>
     </article>
 
     <!-- actions -->
@@ -76,7 +71,22 @@
 
 <script>
 export default {
-  props: ["gift", "discount"],
+  props: {
+    item: {
+      type: Object,
+      required: false,
+      default: () => ({}),
+    },
+    gift: {
+      type: Boolean,
+      default: false,
+    },
+    discount: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
   mounted() {},
   methods: {
     routerHandler(id) {

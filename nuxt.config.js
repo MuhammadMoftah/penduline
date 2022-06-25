@@ -39,6 +39,8 @@ export default {
     "@nuxtjs/tailwindcss",
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
+    //Nuxt Auth
+    "@nuxtjs/auth-next",
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
 
@@ -68,10 +70,37 @@ export default {
     ],
   ],
 
+  // auth configuration
+  auth: {
+    redirect: {
+      // login: "/login",
+      // logout: "/login",
+      login: false,
+      logout: false,
+      callback: false,
+      home: false,
+    },
+    strategies: {
+      local: {
+        token: {
+          property: "meta.token",
+        },
+        user: {
+          property: "data",
+        },
+        endpoints: {
+          login: { url: "/auth/login?include=feeds,children", method: "post" },
+          logout: { url: "/auth/logout", method: "post" },
+          user: { url: "/auth/me?include=points", method: "get" },
+        },
+      },
+    },
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: "/",
+    baseURL: "https://penduline.com/api",
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

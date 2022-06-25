@@ -7,6 +7,7 @@
             class="w-full h-12 px-4 text-sm font-semibold border rounded-md ltr:tracking-wider text-slate-500 bg-slate-50 border-slate-200 outline-theme2"
             :placeholder="$t('your_email')"
             type="email"
+            v-model="form.email"
           />
           <AtIcon
             class="absolute w-5 h-5 -translate-y-1/2 top-1/2 rtl:left-5 ltr:right-5 text-slate-300"
@@ -18,6 +19,7 @@
             class="w-full h-12 px-4 text-sm font-semibold border rounded-md ltr:tracking-wider text-slate-500 bg-slate-50 border-slate-200 outline-theme2"
             :placeholder="$t('password')"
             type="password"
+            v-model="form.password"
           />
           <LockIcon
             class="absolute w-5 h-5 -translate-y-1/2 top-1/2 rtl:left-5 ltr:right-5 text-slate-300"
@@ -71,15 +73,26 @@ export default {
   data() {
     return {
       loading: false,
+      form: {
+        email: "",
+        password: "",
+      },
     };
   },
   methods: {
     done() {
       this.loading = true;
-      setTimeout(() => {
-        this.$router.push("/profile");
-        this.$store.commit("global/closeModal");
-      }, 1000);
+      this.$auth
+        .loginWith("local", { data: this.form })
+        .then((res) => {
+          this.$successHandler(
+            this.$t("welcome_back") + " " + res.data.data.name
+          );
+        })
+        .catch((err) => {
+          this.$errorHandler(err);
+          this.loading = false;
+        });
     },
   },
 };

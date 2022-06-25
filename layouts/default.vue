@@ -21,7 +21,16 @@ export default {
   beforeMount() {
     this.setFont();
   },
+  fetch() {
+    this.setAxios();
+  },
   methods: {
+    setAxios() {
+      const code = this.$i18n.locale;
+      // for headers also
+      this.$axios.setHeader("Accept-Language", code);
+      console.log("setAxios", code);
+    },
     setFont() {
       const code = this.$i18n.locale;
       if (code == "ar") {

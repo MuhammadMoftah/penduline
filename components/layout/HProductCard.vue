@@ -6,27 +6,22 @@
     <img
       @click="routerHandler()"
       class="object-contain h-40 mx-auto duration-300 cursor-pointer w-fit ltr:mr-5 rtl:ml-5 hover:brightness-105 hover:opacity-90"
-      src="~/static/img1.png"
+      :src="item.images ? item.images[0] : require('~/static/shower.png')"
       alt
     />
 
     <div>
       <article class="flex flex-col justify-between h-36">
-        <p class="text-[#B7AC6C] text-sm font-semibold">REDEEM YOUR POINTS</p>
+        <p class="text-[#B7AC6C] text-sm font-semibold">{{$t('redem_your_code')}}</p>
         <aside>
-          <h5 class="font-semibold">Penduline Shower Gel</h5>
+          <h5 class="font-semibold">{{item.name}}</h5>
           <p
             class="overflow-hidden text-xs leading-[17px] text-slate-400 h-12"
             style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"
-          >
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas at
-            tenetur similique, doloremque dicta cum veniam quia eligendi excepturi
-            obcaecati harum dolorum iste consequatur ut accusamus culpa.
-            Explicabo, ex voluptate!
-          </p>
+          >{{item.description}}</p>
         </aside>
         <p v-if="!gift" class="font-semibold">
-          78 {{$t('egp')}}
+          {{item.price}} {{$t('egp')}}
           <span
             v-if="discount"
             class="mx-1 text-sm font-semibold line-through text-slate-400"
@@ -72,7 +67,7 @@
 
 <script>
 export default {
-  props: ["gift", "discount"],
+  props: ["gift", "discount", "item"],
   methods: {
     routerHandler(id) {
       if (this.gift) {
