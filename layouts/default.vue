@@ -20,6 +20,9 @@
 export default {
   beforeMount() {
     this.setFont();
+
+    //syncCart with localStorage
+    this.$syncCart();
   },
   fetch() {
     this.setAxios();
@@ -28,8 +31,7 @@ export default {
     setAxios() {
       const code = this.$i18n.locale;
       // for headers also
-      this.$axios.setHeader("Accept-Language", code);
-      console.log("setAxios", code);
+      this.$axios.setHeader("Application-Lang", code);
     },
     setFont() {
       const code = this.$i18n.locale;

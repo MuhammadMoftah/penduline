@@ -26,7 +26,7 @@
         <button type="button" class="indicator click-scale">
           <span
             class="border-none rounded-full h-4 px-1 badge badge-sm indicator-item bg-theme1 text-[10px] text-white"
-          >4</span>
+          >{{itemsQuantity }}</span>
           <CartIcon
             @click.native="$router.push(localePath('/my-cart'))"
             class="w-4 h-4 lg:w-5 lg:h-5 text-slate-600"
@@ -105,6 +105,11 @@ export default {
     window.addEventListener("scroll", this.handleScroll);
     this.handleScroll();
   },
+  computed: {
+    itemsQuantity() {
+      return this.$store.getters["cart/itemsQuantity"];
+    },
+  },
   beforeDestroy() {
     window.removeEventListener("scroll", this.handleScroll);
   },
@@ -117,6 +122,9 @@ export default {
       }
     },
     switchLang(code) {
+      // for headers also
+      this.$axios.setHeader("Application-Lang", code);
+
       if (code == "ar") {
         document.documentElement.style.setProperty(
           "--appFont",
@@ -128,7 +136,9 @@ export default {
           "'Manrope', sans-serif"
         );
       }
-      this.$i18n.setLocale(code);
+      this.$i18n.setLocale(code).then(() => {
+        // this.$nuxt.refresh();
+      });
     },
   },
 };

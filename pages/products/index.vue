@@ -85,12 +85,17 @@ export default {
       view: "grid",
     };
   },
-  async fetch({ store, route }) {
+  async fetch() {
+    const code = this.$i18n.locale;
+    // for headers also
+    this.$axios.setHeader("Application-Lang", code);
+    // console.log("setAxios", code);
+
     const {
       query: { page },
-    } = route;
+    } = this.$route;
     //fetch products
-    await store.dispatch("products/getItems", page);
+    await this.$store.dispatch("products/getItems", page);
   },
   methods: {
     goTo(page) {

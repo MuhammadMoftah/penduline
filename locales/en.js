@@ -167,5 +167,7 @@ export default {
   scratch_step2: "Fill this input with the code at the back of your product",
   scratch_step3: "Now you got the free points, Enjoy!",
   redem_your_code: "Redeem your code",
-  key: "",
+  item_added_to_cart: "Item added to cart",
+  next: "next",
+  empty_data: "Empty data",
 };

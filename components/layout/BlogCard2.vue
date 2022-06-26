@@ -1,7 +1,7 @@
 <template>
   <section
     class="h-[550px] py-14 px-8 max-w-lg bg-black bg-no-repeat bg-cover bg-center shadow-md rounded-xl flex items-end group"
-    :style="`background-image: url(${require('~/static/blog1.jpg')})`"
+    :style="`background-image: url(${require('~/assets/images/kid1.png')})`"
     :dir="$t('dir')"
   >
     <div
@@ -17,10 +17,13 @@
         {{$t('lorem')}}
         {{$t('lorem')}}
       </p>
-      <a class="flex items-center justify-between mt-5 text-sm font-semibold text-white" href>
+      <NuxtLink
+        :to="localePath('/news/1')"
+        class="flex items-center justify-between mt-5 text-sm font-semibold text-white"
+      >
         {{$t('read_now')}}
         <RightChevronIcon class="w-6 h-6 rtl:rotate-180" />
-      </a>
+      </NuxtLink>
     </div>
   </section>
 </template>

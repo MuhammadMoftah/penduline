@@ -39,7 +39,7 @@
       class="mb-16 text-3xl font-semibold text-center capitalize mt-36 text-slate-800"
     >{{$t("we_answer_questions")}}</h5>
     <section class="p-10 rounded-lg bg-slate-100">
-      <CollapseQuestion :title="$t('question1')" v-for="n in 3" :key="n" class="mb-6">
+      <CollapseQuestion :title="$t('question1')" v-for="n in 1" :key="n" class="mb-6">
         <p class="text-sm leading-[27px] font-semibold">{{$t('answer1')}}</p>
       </CollapseQuestion>
     </section>

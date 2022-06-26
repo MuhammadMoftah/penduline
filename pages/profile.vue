@@ -49,27 +49,28 @@
 
           <div class="flex flex-col">
             <p class="mb-1 text-sm font-semibold text-slate-400">{{$t('my_points')}}</p>
-            <p class="font-bold text-center text-theme1">136</p>
+            <p class="font-bold text-center text-theme1">{{$auth.user.total_points}}</p>
           </div>
         </figure>
 
         <div class="flex flex-col justify-center p-4 border border-slate-200">
           <h5 class="mb-1 text-sm font-semibold text-slate-400">{{$t("name")}}</h5>
-          <p class="text-sm font-semibold text-slate-800">Muhammad Moftah</p>
+          <p class="text-sm font-semibold text-slate-800">{{$auth.user.name}}</p>
         </div>
 
         <div class="flex flex-col justify-center p-4 border border-slate-200">
           <h5 class="mb-1 text-sm font-semibold text-slate-400">{{$t("email")}}</h5>
-          <p class="text-sm font-semibold lowercase text-slate-800">Muhammad.moftah3787@gmail.com</p>
+          <p class="text-sm font-semibold lowercase text-slate-800">{{$auth.user.email}}</p>
         </div>
 
         <div class="flex flex-col justify-center p-4 border border-slate-200">
           <h5 class="mb-1 text-sm font-semibold text-slate-400">{{$t("mobile")}}</h5>
-          <p class="text-sm font-semibold text-slate-800">01111564928</p>
+          <p class="text-sm font-semibold text-slate-800">{{$auth.user.mobile}}</p>
         </div>
       </div>
 
       <!-- Locations -->
+      <!-- todo: put real locations  -->
       <transition-group
         tag="div"
         name="slide-fade"
@@ -77,8 +78,9 @@
         v-if="tab == 'locations'"
         class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
       >
-        <LocationCard v-for="n in 6" :key="n" />
+        <LocationCard v-if="false" v-for="n in 6" :key="n" />
         <aside
+          v-if="false"
           key="addLocation"
           class="flex flex-col items-center justify-center p-5 bg-white border shadow-sm rounded-3xl border-slate-100"
           @click="$store.commit('global/modal', 'location')"
@@ -88,6 +90,11 @@
           </button>
           <p class="mt-4 text-sm font-semibold text-slate-600">{{$t('add_new_location')}}</p>
         </aside>
+
+        <p
+          class="w-full col-span-4 p-10 text-sm font-semibold text-center text-slate-500 xl:text-base"
+          key="empty"
+        >{{$t('empty_data')}}</p>
       </transition-group>
 
       <!-- orders -->
@@ -130,6 +137,7 @@
       </transition-group>
 
       <!-- wishlist -->
+      <!-- todo: add real wishlist -->
       <transition-group
         tag="div"
         name="slide-fade"
@@ -137,7 +145,11 @@
         v-if="tab == 'wishlist'"
         class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
       >
-        <VProductCard v-for=" n in 5" :key="n" />
+        <VProductCard v-if="false" v-for=" n in 5" :key="n" />
+        <p
+          class="w-full col-span-4 p-10 text-sm font-semibold text-center text-slate-500 xl:text-base"
+          key="empty"
+        >{{$t('empty_data')}}</p>
       </transition-group>
 
       <!-- children -->

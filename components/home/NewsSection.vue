@@ -18,7 +18,7 @@
       </aside>
     </div>
     <VueSlickCarousel v-bind="sliderSettings" ref="slider">
-      <div class v-for="n in 5" :key="n">
+      <div class v-for="n in 1" :key="n">
         <BlogCard2 />
       </div>
     </VueSlickCarousel>

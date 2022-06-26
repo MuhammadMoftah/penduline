@@ -9,13 +9,19 @@
           src="~/assets/images/title-bg.png"
           alt
         />
-        <h5 class="mb-3 text-4xl font-bold capitalize ltr:tracking-widest">{{$t("new_baby_care")}}</h5>
-        <p class="text-sm font-semibold ltr:tracking-widest">{{$t("new_baby_care")}}</p>
+        <h5
+          class="mb-3 text-4xl font-bold capitalize ltr:tracking-widest"
+        >Children Skin Spots Treatment</h5>
+        <p class="text-sm font-semibold ltr:tracking-widest">Children Skin Spots Treatment</p>
       </header>
     </section>
 
     <section class="flex gap-5 mt-16">
-      <img src="~/static/blog1.jpg" class="object-cover w-full lg:w-9/12 h-[400px] rounded-xl" alt />
+      <img
+        src="~/assets/images/kid1.png"
+        class="object-cover w-full lg:w-9/12 h-[400px] rounded-xl"
+        alt
+      />
 
       <div class="hidden w-3/12 overflow-hidden rounded-xl lg:block">
         <h5
@@ -29,7 +35,9 @@
     </section>
 
     <section class="w-full mt-16 lg:w-9/12" v-for="n in 1" :key="n">
-      <h5 class="mb-6 text-2xl font-semibold capitalize text-slate-800">{{$t('new_baby_care')}}</h5>
+      <h5
+        class="mb-6 text-2xl font-semibold capitalize text-slate-800"
+      >Children Skin Spots Treatment</h5>
       <p class="text-slate-600 leading-[27px]">{{$t('lorem')}}</p>
       <p class="mt-6 text-slate-600 leading-[27px]">{{$t('lorem')}}</p>
     </section>

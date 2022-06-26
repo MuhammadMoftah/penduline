@@ -49,11 +49,14 @@ export default {
         return;
       }
 
-      if (this.code.endsWith("9")) {
-        this.$store.commit("global/modal", "PatchCode");
-      } else {
-        this.counter = this.counter - 1;
-      }
+      // todo: send real code to server
+      this.counter = this.counter - 1;
+      return;
+      // if (this.code.endsWith("9")) {
+      //   this.$store.commit("global/modal", "PatchCode");
+      // } else {
+      //   this.counter = this.counter - 1;
+      // }
     },
   },
 };

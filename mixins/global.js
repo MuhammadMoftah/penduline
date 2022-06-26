@@ -81,6 +81,29 @@ var mixin = {
 
       return result;
     },
+    $addToCart(item) {
+      const cartItems = this.$store.state.cart.items;
+      const newItem = {
+        ...item,
+        quantity: 1,
+      };
+      if (this.$store.state.cart.items.some((el) => el.id == newItem.id)) {
+        this.$store.commit("cart/itemPlus", newItem);
+      } else {
+        this.$store.commit("cart/appendItems", newItem);
+      }
+
+      this.$auth.$storage.setUniversal("cartItems", cartItems);
+      this.$toast.success(this.$t("item_added_to_cart"));
+    },
+    $syncCart() {
+      if (this.$auth.$storage.getUniversal("cartItems")) {
+        this.$store.commit(
+          "cart/appendItems",
+          this.$auth.$storage.getUniversal("cartItems")
+        );
+      }
+    },
   },
 };
 

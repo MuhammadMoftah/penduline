@@ -7,13 +7,14 @@
         alt
       />
       <div class="flex flex-col justify-between h-full">
-        <h5 class="mt-4 mb-6 font-semibold lg:mt-0 text-slate-700">Penduline Shower Gel</h5>
+        <h5 class="mt-4 mb-6 font-semibold lg:mt-0 text-slate-700">{{item.name}}</h5>
         <p class="font-semibold text-slate-600">
-          40
+          {{item.price * item.quantity}}
           <span class="text-slate-400">{{$t('egp')}}</span>
         </p>
         <div class="flex items-center justify-between">
           <button
+            @click="$store.commit('cart/deleteItem', item)"
             type="button"
             class="flex items-center text-xs font-semibold hover:text-theme1 click-scale text-slate-400"
           >
@@ -34,7 +35,7 @@
 
     <div class="flex flex-col items-center justify-between">
       <button
-        @click="quantity++"
+        @click="$store.commit('cart/itemPlus', item)"
         class="w-12 duration-300 border rounded-full h-7 click-scale border-theme1 hover:bg-theme1 hover:text-white text-theme1"
       >
         <PlusIcon class="w-4 h-4 mx-auto" />
@@ -42,13 +43,14 @@
 
       <input
         class="h-8 p-1 text-sm font-semibold text-center rounded-full outline-none w-14 text-slate-600 bg-slate-100"
-        v-model="quantity"
+        v-model="item.quantity"
+        disabled
         type="number"
       />
 
       <button
-        @click="quantity--"
-        :disabled="quantity <= 1"
+        @click="$store.commit('cart/itemMinus', item)"
+        :disabled="item.quantity <= 1"
         class="w-12 duration-300 border rounded-full disabled:opacity-50 disabled:pointer-events-none h-7 click-scale border-theme1 hover:bg-theme1 hover:text-white text-theme1"
       >
         <MinusIcon class="w-4 h-4 mx-auto" />
@@ -59,17 +61,15 @@
 
 <script>
 export default {
-  data() {
-    return {
-      quantity: 1,
-    };
-  },
+  props: ["item"],
 
   watch: {
-    quantity(n) {
-      if (n < 1) {
-        this.quantity = 1;
-      }
+    item: {
+      handler() {
+        const cartItems = this.$store.state.cart.items;
+        this.$auth.$storage.setUniversal("cartItems", cartItems);
+      },
+      deep: true,
     },
   },
 };

@@ -40,6 +40,7 @@
         v-if="!gift"
         type="button"
         class="h-10 text-xs font-semibold capitalize border rounded-full w-36 click-scale border-theme1 text-slate-600 hover:bg-theme1 hover:bg-opacity-5"
+        @click="$addToCart(item)"
       >
         {{$t("add_to_cart")}}
         <BasketIcon class="inline-block w-4 h-4 mx-2 align-sub text-theme1" />
@@ -88,6 +89,7 @@ export default {
   },
 
   mounted() {},
+  computed: {},
   methods: {
     routerHandler(id) {
       if (this.gift) {
