@@ -25,7 +25,7 @@
       </aside>
 
       <p v-if="!gift" class="font-semibold">
-        78 {{$t('egp')}}
+        {{item.price ? item.price :'75'}} {{$t('egp')}}
         <span
           v-if="discount"
           class="mx-1 text-sm font-semibold line-through text-slate-400"

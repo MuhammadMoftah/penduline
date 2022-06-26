@@ -18,8 +18,17 @@
       </aside>
     </div>
     <VueSlickCarousel v-bind="sliderSettings" ref="slider">
-      <div class="pt-20" v-for="n in 5" :key="n">
-        <PosCard />
+      <div class="pt-20">
+        <PosCard :img="require('~/static/pharmacy1.png')" title="El ezaby pharmacy" />
+      </div>
+      <div class="pt-20">
+        <PosCard :img="require('~/static/pharmacy2.png')" title="Misr pharmacy" />
+      </div>
+      <div class="pt-20">
+        <PosCard :img="require('~/static/pharmacy3.png')" title="Saif pharmacy" />
+      </div>
+      <div class="pt-20">
+        <PosCard :img="require('~/static/pharmacy4.png')" title="Helal pharmacy" />
       </div>
     </VueSlickCarousel>
   </section>

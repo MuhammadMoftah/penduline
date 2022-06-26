@@ -45,9 +45,13 @@ export const mutations = {
 const url = "products";
 const includes = "ingredients,categories";
 export const actions = {
-  async getItems({ commit }, page = 1) {
+  async getItems({ commit }, payload) {
+    let query = payload.query || {}; // query
+    const queryString = Object.entries(query)
+      .map((key) => key[0] + "=" + key[1])
+      .join("&");
     const res = this.$axios
-      .$get(`/${url}?per_page=50&page=${page}&include=${includes}`)
+      .$get(`/${url}?per_page=50&include=${includes}&${queryString}`)
       .then((res) => {
         commit("items", res.data);
 

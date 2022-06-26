@@ -6,7 +6,7 @@
     </section>
 
     <!-- products  -->
-    <section class="container flex mt-10">
+    <section class="container flex mt-10 align-top">
       <aside
         class="p-5 border rounded-md min-w-[280px] hidden lg:block theme-shadow border-slate-100"
       >
@@ -50,7 +50,7 @@
           <HProductCard v-for="item in items" :key="item.id" :item="item" />
         </div>
 
-        <Pagination class="mt-16" :meta="meta" @goTo="goTo($event)" />
+        <Pagination class="mt-16" v-if="meta.last_page > 1" :meta="meta" @goTo="goTo($event)" />
       </div>
     </section>
 
@@ -85,28 +85,31 @@ export default {
       view: "grid",
     };
   },
-  async fetch() {
+  async created() {
     const code = this.$i18n.locale;
     // for headers also
     this.$axios.setHeader("Application-Lang", code);
     // console.log("setAxios", code);
 
-    const {
-      query: { page },
-    } = this.$route;
+    const payload = {
+      query: this.$route.query,
+    };
+
     //fetch products
-    await this.$store.dispatch("products/getItems", page);
+    await this.$store.dispatch("products/getItems", payload);
   },
   methods: {
-    goTo(page) {
-      this.$router.push(
+    async goTo(page) {
+      await this.$router.replace(
         this.localePath({
           path: "/products",
-          query: { page },
+          query: { ...this.$route.query, page },
         })
       );
-
-      this.$store.dispatch("products/getItems", page);
+      const payload = {
+        query: this.$route.query,
+      };
+      this.$store.dispatch("products/getItems", payload);
     },
   },
   computed: {

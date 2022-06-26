@@ -98,43 +98,9 @@
       </transition-group>
 
       <!-- orders -->
-      <transition-group tag="div" name="slide-fade" appear v-if="tab == 'orders'">
-        <nav class="flex" key="nav">
-          <li
-            class="w-full py-4 text-sm font-semibold text-center list-none duration-300 cursor-pointer hover:bg-slate-200"
-            :class="ordersTab =='all'?'text-theme1':'text-slate-700'"
-            @click="ordersTab = 'all'"
-          >{{$t('all')}}</li>
-          <li
-            class="w-full py-4 text-sm font-semibold text-center list-none duration-300 cursor-pointer hover:bg-slate-200"
-            :class="ordersTab =='orders'?'text-theme1':'text-slate-700'"
-            @click="ordersTab = 'orders'"
-          >{{$t('orders')}}</li>
-          <li
-            class="w-full py-4 text-sm font-semibold text-center list-none duration-300 cursor-pointer hover:bg-slate-200"
-            :class="ordersTab =='gifts'?'text-theme1':'text-slate-700'"
-            @click="ordersTab = 'gifts'"
-          >{{$t('gifts')}}</li>
-        </nav>
-        <transition-group
-          tag="div"
-          name="slide-fade"
-          key="orders"
-          class="grid gap-4"
-          v-if="ordersTab == 'orders' || ordersTab == 'all'"
-        >
-          <StyleOrderCard v-for="n in 3" :key="n" />
-        </transition-group>
-        <transition-group
-          tag="div"
-          name="slide-fade"
-          key="gifts"
-          class="grid gap-4 mt-4"
-          v-if="ordersTab == 'gifts' || ordersTab == 'all'"
-        >
-          <StyleOrderCard :gift="true" v-for="n in 3" :key="'2'+n" />
-        </transition-group>
-      </transition-group>
+      <transition name="slide-fade" appear>
+        <ProfileOrders v-if="tab == 'orders'" />
+      </transition>
 
       <!-- wishlist -->
       <!-- todo: add real wishlist -->
@@ -182,7 +148,6 @@ export default {
   data() {
     return {
       tab: "profile",
-      ordersTab: "all",
       profileImage: "",
     };
   },

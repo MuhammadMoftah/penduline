@@ -3,19 +3,19 @@
     <div class="flex justify-between mb-8">
       <Title :first="$t('our_products')" />
     </div>
-    <section class="grid grid-cols-3 gap-4 mt-12">
+    <section class="grid grid-cols-1 gap-4 mt-12 md:grid-cols-2 lg:grid-cols-3">
       <PartitionCard
         :title="'Penduline Baby'"
         :desc="'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas at tenetur similique, doloremque dicta cum veniam quia eligendi excepturi obcaecati harum dolorum iste consequatur ut accusamus culpa. Explicabo, ex voluptate!'"
         :img="'https://cdn.pixabay.com/photo/2018/05/11/07/45/mother-3389671_960_720.jpg'"
-        route="/products"
+        route="/products?filter[categories.id]=2"
         class="shadow-lg"
       />
       <PartitionCard
         :title="'Penduline Kids'"
         :desc="'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas at tenetur similique, doloremque dicta cum veniam quia eligendi excepturi obcaecati harum dolorum iste consequatur ut accusamus culpa. Explicabo, ex voluptate!'"
         :img="'https://cdn.pixabay.com/photo/2015/06/22/08/38/children-817368_960_720.jpg'"
-        route="/products"
+        route="/products?filter[categories.id]=7"
         class="shadow-lg"
       />
 
@@ -23,7 +23,7 @@
         :title="'Penduline Curly'"
         :desc="'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas at tenetur similique, doloremque dicta cum veniam quia eligendi excepturi obcaecati harum dolorum iste consequatur ut accusamus culpa. Explicabo, ex voluptate!'"
         :img="'https://images.pexels.com/photos/1862655/pexels-photo-1862655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'"
-        route="/products"
+        route="/products?filter[categories.id]=5"
         class="shadow-lg"
       />
     </section>

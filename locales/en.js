@@ -170,4 +170,5 @@ export default {
   item_added_to_cart: "Item added to cart",
   next: "next",
   empty_data: "Empty data",
+  categories: "Categories",
 };

@@ -168,4 +168,5 @@ export default {
   item_added_to_cart: "تمت اضافة المنتج إلى السلة",
   next: "التالي",
   empty_data: "لا يوجد بيانات",
+  categories: "الاقسام",
 };
