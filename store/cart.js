@@ -47,6 +47,7 @@ export const mutations = {
     state.meta = meta;
   },
   appendItems(state, items) {
+    // state.items = state.items.concat(items);
     state.items = state.items.concat(items);
   },
   itemPlus(state, item) {

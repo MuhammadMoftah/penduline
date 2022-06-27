@@ -2,19 +2,19 @@
   <section class="flex justify-between p-5 bg-white border shadow-sm rounded-3xl border-slate-100">
     <div class="flex flex-col lg:flex-row">
       <img
-        class="inline-block object-contain h-32 p-4 rounded-3xl bg-slate-100 ltr:mr-5 rtl:ml-5"
-        src="~/static/img1.png"
+        class="inline-block object-contain w-32 h-32 p-4 rounded-3xl bg-slate-100 ltr:mr-5 rtl:ml-5"
+        :src="item.images[0]"
         alt
       />
       <div class="flex flex-col justify-between h-full">
-        <h5 class="mt-4 mb-6 font-semibold lg:mt-0 text-slate-700">{{item.name}}</h5>
+        <h5 class="mt-4 mb-6 font-semibold capitalize lg:mt-0 text-slate-700">{{item.name}}</h5>
         <p class="font-semibold text-slate-600">
           {{item.price * item.quantity}}
           <span class="text-slate-400">{{$t('egp')}}</span>
         </p>
         <div class="flex items-center justify-between">
           <button
-            @click="$store.commit('cart/deleteItem', item)"
+            @click="removeItem(item)"
             type="button"
             class="flex items-center text-xs font-semibold hover:text-theme1 click-scale text-slate-400"
           >
@@ -63,11 +63,19 @@
 export default {
   props: ["item"],
 
+  methods: {
+    removeItem(item) {
+      this.$store.commit("cart/deleteItem", item);
+      const cartItems = this.$store.state.cart.items;
+      this.$auth.$storage.setLocalStorage("cartItems", cartItems);
+    },
+  },
+
   watch: {
     item: {
       handler() {
         const cartItems = this.$store.state.cart.items;
-        this.$auth.$storage.setUniversal("cartItems", cartItems);
+        this.$auth.$storage.setLocalStorage("cartItems", cartItems);
       },
       deep: true,
     },

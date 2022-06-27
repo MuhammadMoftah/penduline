@@ -46,7 +46,7 @@ const url = "products";
 const includes = "ingredients,categories";
 export const actions = {
   async getItems({ commit }, payload) {
-    let query = payload.query || {}; // query
+    let query = payload?.query || {}; // query
     const queryString = Object.entries(query)
       .map((key) => key[0] + "=" + key[1])
       .join("&");

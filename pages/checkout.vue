@@ -23,8 +23,8 @@
         <div class="p-5 bg-white shadow-sm rounded-xl">
           <h5 class="mb-4 text-lg font-semibold text-slate-800">{{$t('delivery_method')}}</h5>
 
-          <div class="space-y-6" v-if="locations.length">
-            <aside v-for="el in [...locations].splice(0,4)" :key="el.id" class>
+          <div class="space-y-6" v-if="addresses.length">
+            <aside v-for="el in addresses" :key="el.id" class>
               <label class="flex items-center gap-2 cursor-pointer">
                 <input
                   type="radio"
@@ -34,14 +34,14 @@
                   :value="el"
                 />
                 <p
-                  class="text-sm font-semibold text-slate-600"
-                >{{el.name}} (+{{el.delivery_fees}} {{$t('egp')}})</p>
+                  class="text-sm font-semibold capitalize text-slate-600"
+                >{{el.name}} (+{{el.district.delivery_fees}} {{$t('egp')}})</p>
               </label>
               <p class="mt-1 text-xs text-slate-500">
                 {{$t('delivery_within')}}
                 <span
                   class="font-semibold text-slate-600"
-                >{{el.delivery_days}}</span>
+                >{{el.district.delivery_days}} {{$t('days')}}</span>
               </p>
             </aside>
           </div>
@@ -108,12 +108,12 @@
             </p>
             <p class="flex items-center justify-between py-2 text-xs font-semibold text-slate-500">
               <span>{{$t('delivery_within')}}</span>
-              <span>{{pickedLocation.delivery_days }} {{$t('days')}}</span>
+              <span>{{pickedLocation.district ? pickedLocation.district.delivery_days : '...' }} {{$t('days')}}</span>
             </p>
 
             <p class="flex items-center justify-between py-2 text-xs font-semibold text-slate-500">
               <span>{{$t('shipping')}}</span>
-              <span>{{pickedLocation.delivery_fees}} {{$t('egp')}}</span>
+              <span>{{pickedLocation.district ? pickedLocation.district.delivery_fees : '...'}} {{$t('egp')}}</span>
             </p>
 
             <p class="flex items-center justify-between py-2 text-xs font-semibold text-slate-500">
@@ -154,7 +154,7 @@ export default {
       });
     // this.$axios.$get("/coupons");
 
-    this.$axios.$get("/addresses").then((res) => {
+    this.$axios.$get("/addresses?include=city,district").then((res) => {
       this.addresses = res.data;
     });
   },
@@ -170,8 +170,8 @@ export default {
       // the correct to sent .pickedLocation.id
       this.form["address_id"] = this.addresses[0].id;
       // this.form["address_id"] = this.pickedLocation.id;
-      this.form["delivery_days"] = this.pickedLocation.delivery_days;
-      this.form["delivery_fees"] = this.pickedLocation.delivery_fees;
+      this.form["delivery_days"] = this.pickedLocation.district?.delivery_days;
+      this.form["delivery_fees"] = this.pickedLocation.district?.delivery_fees;
       this.form["sub_total"] = this.subTotal;
       this.form["grand_total"] = this.grandTotal;
       for (let i in this.cartItems) {
@@ -190,7 +190,7 @@ export default {
           this.$toast.success("Order placed successfully");
 
           this.$store.commit("cart/items", []);
-          this.$auth.$storage.setUniversal("cartItems", []);
+          this.$auth.$storage.setLocalStorage("cartItems", []);
           this.$router.push("/products");
         })
         .catch((err) => {
@@ -223,7 +223,7 @@ export default {
         return 0;
       }
       return (
-        this.$store.getters["cart/subTotal"] + this.pickedLocation.delivery_fees
+        this.$store.getters["cart/subTotal"] + this.pickedLocation.district?.delivery_fees
       );
     },
   },

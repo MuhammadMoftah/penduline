@@ -8,9 +8,9 @@
       >{{$t('profile')}}</a>
       <a
         class="w-full p-0 text-base tab-lg md:text-lg tab tab-bordered click-scale"
-        :class="tab == 'locations' ? 'tab-active':''"
-        @click="setTab('locations')"
-      >{{$t('locations')}}</a>
+        :class="tab == 'addresses' ? 'tab-active':''"
+        @click="setTab('addresses')"
+      >{{$t('addresses')}}</a>
       <a
         class="w-full p-0 text-base tab-lg md:text-lg tab tab-bordered click-scale"
         :class="tab == 'orders' ? 'tab-active':''"
@@ -69,37 +69,19 @@
         </div>
       </div>
 
-      <!-- Locations -->
-      <!-- todo: put real locations  -->
-      <transition-group
-        tag="div"
-        name="slide-fade"
-        appear
-        v-if="tab == 'locations'"
-        class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-      >
-        <LocationCard v-if="false" v-for="n in 6" :key="n" />
-        <aside
-          v-if="false"
-          key="addLocation"
-          class="flex flex-col items-center justify-center p-5 bg-white border shadow-sm rounded-3xl border-slate-100"
-          @click="$store.commit('global/modal', 'location')"
-        >
-          <button class="w-20 h-20 rounded-full btn bg-slate-100 hover:bg-slate-200">
-            <PlusIcon class="w-10 h-10 mx-auto text-theme1" />
-          </button>
-          <p class="mt-4 text-sm font-semibold text-slate-600">{{$t('add_new_location')}}</p>
-        </aside>
-
-        <p
-          class="w-full col-span-4 p-10 text-sm font-semibold text-center text-slate-500 xl:text-base"
-          key="empty"
-        >{{$t('empty_data')}}</p>
-      </transition-group>
+      <!-- addresses -->
+      <!-- todo: put real addresses  -->
+      <transition name="slide-fade" appear>
+        <KeepAlive>
+          <ProfileAddresses v-if="tab == 'addresses'" />
+        </KeepAlive>
+      </transition>
 
       <!-- orders -->
       <transition name="slide-fade" appear>
-        <ProfileOrders v-if="tab == 'orders'" />
+        <KeepAlive>
+          <ProfileOrders v-if="tab == 'orders'" />
+        </KeepAlive>
       </transition>
 
       <!-- wishlist -->
@@ -138,7 +120,8 @@
     </section>
 
     <!-- modals  -->
-    <PopupLocationModal v-if="modal== 'location'" />
+    <PopupAddressCreate v-if="modal== 'CreateAddress'" />
+    <PopupAddressDelete v-if="modal== 'DeleteAddress'" />
     <PopupAddChildModal v-if="modal == 'AddChild'" />
   </main>
 </template>

@@ -5,7 +5,7 @@
   >
     <img
       @click="routerHandler()"
-      class="object-contain h-40 mx-auto duration-300 cursor-pointer w-fit ltr:mr-5 rtl:ml-5 hover:brightness-105 hover:opacity-90"
+      class="object-contain w-40 h-40 duration-300 cursor-pointer shrink-0 ltr:mr-5 rtl:ml-5 hover:brightness-105 hover:opacity-90"
       :src="item.images ? item.images[0] : require('~/static/shower.png')"
       alt
     />
@@ -14,7 +14,7 @@
       <article class="flex flex-col justify-between h-36">
         <p class="text-[#B7AC6C] text-sm font-semibold">{{$t('redem_your_code')}}</p>
         <aside>
-          <h5 class="font-semibold">{{item.name}}</h5>
+          <h5 class="font-semibold capitalize">{{item.name}}</h5>
           <p
             class="overflow-hidden text-xs leading-[17px] text-slate-400 h-12"
             style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"

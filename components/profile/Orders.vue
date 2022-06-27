@@ -11,6 +11,7 @@
         :class="tab =='orders'?'text-theme1':'text-slate-700'"
         @click="tab = 'orders'"
       >{{$t('orders')}}</li>
+
       <li
         class="w-full py-4 text-sm font-semibold text-center list-none duration-300 cursor-pointer hover:bg-slate-200"
         :class="tab =='gifts'?'text-theme1':'text-slate-700'"
@@ -35,7 +36,12 @@
       class="grid gap-4 mt-4"
       v-if="tab == 'gifts' || tab == 'all' && false"
     >
-      <StyleOrderCard :gift="true" v-for="n in 3" :key="'2'+n" />
+      <!-- todo: gifts orders  -->
+      <StyleOrderCard :gift="true" v-for="n in 3" :key="'2'+n" v-if="false" />
+      <p
+        class="p-10 text-sm font-semibold text-center text-slate-500"
+        key="noData"
+      >{{$t('empty_data')}}</p>
     </transition-group>
   </section>
 </template>

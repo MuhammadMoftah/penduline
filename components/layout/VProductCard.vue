@@ -13,7 +13,7 @@
     <article class="flex flex-col justify-between h-36">
       <p class="text-[#B7AC6C] text-sm font-semibold mt-2">{{$t('redem_your_code')}}</p>
       <aside>
-        <h5 class="font-semibold">{{item.name}}</h5>
+        <h5 class="font-semibold capitalize">{{item.name}}</h5>
         <p
           class="overflow-hidden text-xs leading-[17px] text-slate-400 h-12"
           style="

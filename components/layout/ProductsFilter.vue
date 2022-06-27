@@ -4,6 +4,7 @@
       <span class="text-xl font-semibold text-slate-800">{{$t('filter')}}</span>
       <button
         type="button"
+        @click="clearFilters"
         class="text-sm font-semibold capitalize text-theme1 click-scale"
       >{{$t('clear')}}</button>
     </div>
@@ -67,6 +68,14 @@ export default {
         ];
       }
     },
+    async clearFilters() {
+      //todo: clear filters from url and components
+      return;
+      await this.$router.replace({
+        query: {},
+      });
+      this.$store.dispatch("products/getItems");
+    },
     changePriceRange(range) {
       this.$router
         .replace(
@@ -78,21 +87,13 @@ export default {
           })
         )
         .then(() => {
-          const payload = {
-            query: this.$route.query,
-          };
-          console.log("query", this.$route.query);
+          const payload = { query: this.$route.query };
           this.$store.dispatch("products/getItems", payload);
         })
-        .catch((err) => {});
+        .catch((err) => { });
     },
-  },
 
-  watch: {
-    priceRange(val) {
-      this.changePriceRange(val);
-    },
-    categories(val) {
+    changeCategories(val) {
       this.$router
         .replace(
           this.localePath({
@@ -106,10 +107,18 @@ export default {
           const payload = {
             query: this.$route.query,
           };
-          console.log("query", this.$route.query);
           this.$store.dispatch("products/getItems", payload);
         })
-        .catch((err) => {});
+        .catch((err) => { });
+    },
+  },
+
+  watch: {
+    priceRange(val) {
+      this.changePriceRange(val);
+    },
+    categories(val) {
+      this.changeCategories(val);
     },
   },
 };

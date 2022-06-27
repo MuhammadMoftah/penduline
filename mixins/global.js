@@ -25,6 +25,7 @@ var mixin = {
       this.$store.commit("global/closeModal");
     },
     $errorHandler(err, customMessage) {
+      this.mixLoader = false;
       if (customMessage) {
         this.$toast.error(customMessage);
         return;
@@ -90,19 +91,24 @@ var mixin = {
       if (this.$store.state.cart.items.some((el) => el.id == newItem.id)) {
         this.$store.commit("cart/itemPlus", newItem);
       } else {
-        this.$store.commit("cart/appendItems", newItem);
+        this.$store.commit("cart/appendItems", [newItem]);
       }
 
-      this.$auth.$storage.setUniversal("cartItems", cartItems);
+      this.$auth.$storage.setLocalStorage(
+        "cartItems",
+        this.$store.state.cart.items
+      );
       this.$toast.success(this.$t("item_added_to_cart"));
     },
     $syncCart() {
-      if (this.$auth.$storage.getUniversal("cartItems")) {
+      if (this.$auth.$storage.getLocalStorage("cartItems")) {
         this.$store.commit(
-          "cart/appendItems",
-          this.$auth.$storage.getUniversal("cartItems")
+          "cart/items",
+          this.$auth.$storage.getLocalStorage("cartItems")
         );
       }
+      console.log(this.$store.state.cart.items);
+      console.log(this.$auth.$storage.getLocalStorage("cartItems"));
     },
   },
 };
