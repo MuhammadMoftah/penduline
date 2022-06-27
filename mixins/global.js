@@ -107,8 +107,6 @@ var mixin = {
           this.$auth.$storage.getLocalStorage("cartItems")
         );
       }
-      console.log(this.$store.state.cart.items);
-      console.log(this.$auth.$storage.getLocalStorage("cartItems"));
     },
   },
 };

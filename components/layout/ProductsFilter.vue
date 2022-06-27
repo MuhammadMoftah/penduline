@@ -9,10 +9,7 @@
       >{{$t('clear')}}</button>
     </div>
 
-    <CollapseFilter
-      class="my-4 overflow-auto capitalize max-h-72 scrollWidth"
-      :title="$t('categories')"
-    >
+    <CollapseFilter class="my-4 overflow-auto capitalize max-h-72" :title="$t('categories')">
       <FiltersSelect url="/categories" v-model="categories" />
     </CollapseFilter>
 
@@ -24,21 +21,20 @@
       </div>
     </CollapseFilter>
 
-    <CollapseFilter class="my-4 capitalize" :title="'Filter 3'" v-if="false">
-      <label class="cursor-pointer label">
-        <span class="label-text text-slate-600">filter 1</span>
-        <input type="checkbox" class="checkbox checkbox-primary checkbox-xs border-slate-200" />
-      </label>
+    <CollapseFilter class="my-4 overflow-auto capitalize max-h-72" :title="$t('ingredients')">
+      <FiltersSelect url="/ingredients" v-model="ingredients" />
+    </CollapseFilter>
 
-      <label class="cursor-pointer label">
-        <span class="label-text text-slate-600">filter 2</span>
-        <input type="checkbox" class="checkbox checkbox-primary checkbox-xs border-slate-200" />
-      </label>
+    <CollapseFilter class="my-4 overflow-auto capitalize max-h-72" :title="$t('hair_type')">
+      <FiltersSelect :arrayOfObjects="hairTypeFilters" v-model="hairType" />
+    </CollapseFilter>
 
-      <label class="cursor-pointer label">
-        <span class="label-text text-slate-600">filter 3</span>
-        <input type="checkbox" class="checkbox checkbox-primary checkbox-xs border-slate-200" />
-      </label>
+    <CollapseFilter class="my-4 overflow-auto capitalize max-h-72" :title="$t('hair_porosity')">
+      <FiltersSelect :arrayOfObjects="hairProtinFilters" v-model="hairPorosity" />
+    </CollapseFilter>
+
+    <CollapseFilter class="my-4 overflow-auto capitalize max-h-72" :title="$t('hair_protein')">
+      <FiltersSelect :arrayOfObjects="hairProtinFilters" v-model="hairProtein" />
     </CollapseFilter>
   </section>
 </template>
@@ -49,6 +45,42 @@ export default {
     return {
       categories: [],
       priceRange: [0, 100],
+      ingredients: [],
+      hairType: [],
+      hairPorosity: [],
+      hairProtein: [],
+      hairTypeFilters: [
+        {
+          id: 'silky',
+          name: this.$t('silky')
+        },
+        {
+          id: 'wavy',
+          name: this.$t('wavy')
+        },
+        {
+          id: 'dry',
+          name: this.$t('dry')
+        },
+        {
+          id: 'curly',
+          name: this.$t('curly')
+        }
+      ],
+      hairProtinFilters: [
+        {
+          id: 'low',
+          name: this.$t('low'),
+        },
+        {
+          id: 'medium',
+          name: this.$t('medium'),
+        },
+        {
+          id: 'high',
+          name: this.$t('high'),
+        }
+      ],
     };
   },
   created() {
@@ -56,16 +88,39 @@ export default {
   },
   methods: {
     initFilters() {
-      if (this.$route.query["filter[categories.id]"]) {
-        this.categories = [
-          ...this.$route.query["filter[categories.id]"].split(",").map(Number),
-        ];
-      }
+      let filters = [
+        {
+          variable: 'categories',
+          key: 'filter[categories.id]',
+        },
+        {
+          variable: 'ingredients',
+          key: 'filter[ingredients.id]',
+        },
+        {
+          variable: 'priceRange',
+          key: 'filter[price_between]',
+        },
+        {
+          variable: 'hairType',
+          key: 'filter[hair_type]',
+        },
+        {
+          variable: 'hairPorosity',
+          key: 'filter[hair_porosity]',
+        },
+        {
+          variable: 'hairProtein',
+          key: 'filter[hair_protein]',
+        },
 
-      if (this.$route.query["filter[price_between]"]) {
-        this.priceRange = [
-          ...this.$route.query["filter[price_between]"].split(",").map(Number),
-        ];
+      ]
+      for (let i in filters) {
+        if (this.$route.query[filters[i]['key']]) {
+          this[filters[i]['variable']] = [
+            ...this.$route.query[filters[i]['key']].split(","),
+          ];
+        }
       }
     },
     async clearFilters() {
@@ -76,30 +131,14 @@ export default {
       });
       this.$store.dispatch("products/getItems");
     },
-    changePriceRange(range) {
-      this.$router
-        .replace(
-          this.localePath({
-            query: {
-              ...this.$route.query,
-              "filter[price_between]": range.join(),
-            },
-          })
-        )
-        .then(() => {
-          const payload = { query: this.$route.query };
-          this.$store.dispatch("products/getItems", payload);
-        })
-        .catch((err) => { });
-    },
 
-    changeCategories(val) {
+    changeFilters(key, val) {
       this.$router
         .replace(
           this.localePath({
             query: {
               ...this.$route.query,
-              "filter[categories.id]": val.join(),
+              [key]: val.join(),
             },
           })
         )
@@ -115,17 +154,26 @@ export default {
 
   watch: {
     priceRange(val) {
-      this.changePriceRange(val);
+      this.changeFilters('filter[price_between]', val);
     },
     categories(val) {
-      this.changeCategories(val);
+      this.changeFilters('filter[categories.id]', val);
+    },
+    ingredients(val) {
+      this.changeFilters('filter[ingredients.id]', val);
+    },
+    hairType(val) {
+      this.changeFilters('filter[hair_type]', val);
+    },
+    hairPorosity(val) {
+      this.changeFilters('filter[hair_porosity]', val);
+    },
+    hairProtein(val) {
+      this.changeFilters('filter[hair_protein]', val);
     },
   },
 };
 </script>
 
 <style scoped>
-.scrollWidth::-webkit-scrollbar {
-  @apply w-[1.5px] xl:w-[2px];
-}
 </style>
