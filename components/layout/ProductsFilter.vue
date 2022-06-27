@@ -79,7 +79,8 @@ export default {
         {
           id: 'high',
           name: this.$t('high'),
-        }
+        },
+
       ],
     };
   },
@@ -133,19 +134,22 @@ export default {
     },
 
     changeFilters(key, val) {
+      let query = {
+        ...this.$route.query,
+        [key]: val?.join()
+      }
+
+      // remove null from query
+      if (!query[key]) delete query[key]
+
+
       this.$router
-        .replace(
-          this.localePath({
-            query: {
-              ...this.$route.query,
-              [key]: val.join(),
-            },
-          })
-        )
+        .replace(this.localePath({ query }))
         .then(() => {
           const payload = {
             query: this.$route.query,
           };
+          console.log('after then', this.$route.query)
           this.$store.dispatch("products/getItems", payload);
         })
         .catch((err) => { });
