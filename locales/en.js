@@ -189,5 +189,6 @@ export default {
   medium: "Medium",
   high: "High",
   edit_address: "Edit address",
+  see_all: "See all",
   key: "",
 };

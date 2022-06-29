@@ -24,7 +24,7 @@ export default {
     //syncCart with localStorage
     this.$syncCart();
   },
-  fetch() {
+  created() {
     this.setAxios();
   },
   methods: {

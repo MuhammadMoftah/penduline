@@ -1,25 +1,30 @@
 <template>
   <section class="container">
     <div class="flex justify-between mb-8">
-      <Title :first="$t('discounts')" />
-      <aside class="flex justify-between w-24 rtl:flex-row-reverse">
+      <Title :first="title" />
+      <aside class="flex items-center justify-between gap-4 w-max">
+        <NuxtLink
+          v-if="seeAllRoute"
+          :to="seeAllRoute"
+          class="text-sm text-theme1 font-meduim hover:text-theme1/70 hover:underline"
+        >{{$t('see_all')}}</NuxtLink>
         <button
           class="border rounded-full h-9 w-9 hover:bg-theme1 hover:border-theme1 hover:text-white click-scale border-slate-300"
           @click="$refs.slider.prev()"
         >
-          <LeftChevronIcon class="mx-auto w-7 h-7" />
+          <LeftChevronIcon class="mx-auto w-7 h-7 rtl:rotate-180" />
         </button>
         <button
           class="border rounded-full h-9 w-9 hover:bg-theme1 hover:border-theme1 hover:text-white click-scale border-slate-300"
           @click="$refs.slider.next()"
         >
-          <RightChevronIcon class="mx-auto w-7 h-7" />
+          <RightChevronIcon class="mx-auto w-7 h-7 rtl:rotate-180" />
         </button>
       </aside>
     </div>
-    <VueSlickCarousel v-bind="sliderSettings" ref="slider">
-      <div v-for="n in 10" :key="n">
-        <VProductCard :discount="true" class="shadow-lg" />
+    <VueSlickCarousel v-bind="sliderSettings" ref="slider" v-if="items.length">
+      <div v-for="el in items" :key="el.id">
+        <VProductCard :item="el" class="shadow-lg" />
       </div>
     </VueSlickCarousel>
   </section>
@@ -32,9 +37,18 @@ import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
 export default {
+  props: {
+    title: { default: "" },
+    endpoint: { default: "" },
+    seeAllRoute: { default: "" },
+  },
   components: { VueSlickCarousel },
+  created() {
+    this.getItems();
+  },
   data() {
     return {
+      items: [],
       sliderSettings: {
         dots: false,
         arrows: false,
@@ -69,6 +83,17 @@ export default {
         ],
       },
     };
+  },
+  methods: {
+    getItems() {
+      this.$axios
+        .get(this.endpoint)
+        .then((response) => {
+          this.items = response.data.data;
+          console.log('items', this.items)
+        })
+        .catch((err) => this.$errorHandler(err));
+    },
   },
 };
 </script>

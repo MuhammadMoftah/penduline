@@ -88,7 +88,7 @@ export default {
     },
   },
 
-  mounted() {},
+  mounted() { },
   computed: {},
   methods: {
     routerHandler(id) {

@@ -68,7 +68,11 @@
     </section>
 
     <section class="mt-32">
-      <DiscountsSection />
+      <ProductsSlider
+        :title="$t('products')"
+        :seeAllRoute="localePath('/products?filter[categories.id]=5')"
+        endpoint="/products?include=ingredients,categories&filter[categories.id]=5"
+      />
     </section>
 
     <section class="container mt-32">

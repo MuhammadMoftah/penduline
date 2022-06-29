@@ -187,5 +187,6 @@ export default {
   medium: "متوسط",
   high: "عالي",
   edit_address: "تعديل العنوان",
+  see_all: "عرض الكل",
   key: "",
 };
