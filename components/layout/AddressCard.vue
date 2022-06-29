@@ -22,12 +22,12 @@
         <TrashIcon class="w-5 h-5 ltr:mr-1 rtl:ml-1" />
         {{$t('remove')}}
       </button>
-      <span class="w-[1px] h-6 mx-4 rounded-full bg-slate-200 opacity-0"></span>
+      <span class="w-[1px] h-6 mx-4 rounded-full bg-slate-200"></span>
 
       <!-- todo: finish edit address  -->
       <button
         type="button"
-        class="flex items-center text-xs font-semibold opacity-0 pointer-events-none hover:text-theme1 click-scale text-slate-400"
+        class="flex items-center text-xs font-semibold hover:text-theme1 click-scale text-slate-400"
         @click="$store.commit('addresses/item', item),$store.commit('global/modal', 'CreateAddress')"
       >
         <EditIcon class="w-5 h-5 ltr:mr-1 rtl:ml-1" />

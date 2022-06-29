@@ -186,5 +186,6 @@ export default {
   low: "منخفض",
   medium: "متوسط",
   high: "عالي",
+  edit_address: "تعديل العنوان",
   key: "",
 };

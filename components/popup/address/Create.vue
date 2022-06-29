@@ -1,6 +1,6 @@
 <template>
   <section>
-    <PopupModal classes="max-w-lg" :title="$t('add_new_address')" :subtitle="$t('add_new_address')">
+    <PopupModal classes="max-w-lg" :title="oldData ? $t('edit_address') : $t('add_new_address') ">
       <form class="px-5 overflow-auto space-y-3 max-h-[75vh]" @submit.prevent="done()">
         <label for class="relative flex">
           <input
@@ -110,9 +110,24 @@ export default {
 
   created() {
     this.getLocations();
+    this.fillOldData()
 
   },
   methods: {
+    fillOldData() {
+      console.log(this.oldData);
+      this.getDistricts()
+      if (this.oldData) {
+        this.form.name = this.oldData.name;
+        this.form.street_name = this.oldData.street_name;
+        this.form.building_number = this.oldData.building_number;
+        this.form.postal_code = this.oldData.postal_code;
+        this.form.is_default = this.oldData.is_default;
+        this.form.city_id = this.oldData.city_id;
+        this.form.district_id = this.oldData.district_id;
+      }
+    },
+
     getLocations() {
       this.$axios.get("/locations?include=children,parent,descendants&filter[type]=city")
         .then((response) => {
@@ -131,18 +146,31 @@ export default {
           this.$errorHandler(err);
         });
     },
-
     done() {
+      if (this.oldData) {
+        this.edit()
+        return
+      }
+      this.create()
+    },
+    create() {
       this.mixLoader = true
-      // this.form.city_id = this.city.id;
       this.$axios.post('/addresses', this.form)
         .then(() => {
           this.$store.commit('global/closeModal');
           this.$store.dispatch('addresses/getItems')
         })
         .catch((err) => { this.$errorHandler(err) })
-
     },
+    edit() {
+      this.mixLoader = true
+      this.$axios.post(`/addresses/${this.oldData.id}?_method=PUT`, this.form)
+        .then(() => {
+          this.$store.commit('global/closeModal');
+          this.$store.dispatch('addresses/getItems')
+        })
+        .catch((err) => { this.$errorHandler(err) })
+    }
   },
 };
 </script>
