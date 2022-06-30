@@ -85,7 +85,6 @@
       </transition>
 
       <!-- wishlist -->
-      <!-- todo: add real wishlist -->
       <transition-group
         tag="div"
         name="slide-fade"
@@ -93,8 +92,9 @@
         v-if="tab == 'wishlist'"
         class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
       >
-        <VProductCard v-if="false" v-for=" n in 5" :key="n" />
+        <VProductCard :hidePrice="true" :item="el" v-for=" el in wishlistItems" :key="el.id" />
         <p
+          v-if="!wishlistItems.length"
           class="w-full col-span-4 p-10 text-sm font-semibold text-center text-slate-500 xl:text-base"
           key="empty"
         >{{$t('empty_data')}}</p>
@@ -138,6 +138,9 @@ export default {
     modal() {
       return this.$store.state.global.modal;
     },
+    wishlistItems() {
+      return this.$store.state.favorite.items;
+    }
   },
   methods: {
     setTab(tab) {

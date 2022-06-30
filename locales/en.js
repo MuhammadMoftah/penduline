@@ -96,7 +96,6 @@ export default {
   hair: "Hair",
   more: "more",
   new_baby_care: "New baby care",
-  login: "Login",
   register: "Register",
   join_family: "Join our family",
   welcome_back: "Welcome back",
@@ -190,5 +189,6 @@ export default {
   high: "High",
   edit_address: "Edit address",
   see_all: "See all",
+  login_with_new: "Done, please login with new data",
   key: "",
 };

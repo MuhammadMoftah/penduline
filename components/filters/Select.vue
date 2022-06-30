@@ -1,5 +1,5 @@
 <template>
-  <section class="scrollWidth">
+  <section class>
     <template v-if="url">
       <label class="cursor-pointer label" v-for="el in filters" :key="el.id">
         <span class="label-text text-slate-600">{{el.name}}</span>
@@ -57,8 +57,5 @@ export default {
 };
 </script>
 
-<style scoped>
-.scrollWidth::-webkit-scrollbar {
-  @apply w-[1.5px] xl:w-[2px];
-}
+<style>
 </style>

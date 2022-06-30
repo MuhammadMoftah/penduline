@@ -53,7 +53,9 @@
               {{tab == 'safety' ? '' : 'safety'}}
             </button>
 
+            <!-- todo: useage secition  -->
             <button
+              v-if="false"
               type="button"
               @click="tab = 'useage'"
               class="flex items-center h-12 gap-1 text-xs font-semibold duration-300 rounded-full text-slate-600"
@@ -67,38 +69,32 @@
           <section class="w-full bg-slate flex items-center h-[450px]">
             <!-- image section -->
             <figure v-if="tab == 'image'" class="h-full mx-auto">
-              <img src="~/static/shower.png" class="object-contain h-full mx-auto" alt />
+              <img
+                v-if="item.images"
+                :src="item.images[0]"
+                class="object-contain h-full mx-auto"
+                alt
+              />
             </figure>
 
             <!-- ingredients section -->
             <figure
-              class="relative flex flex-wrap items-start w-full h-full gap-3 p-1"
+              class="relative flex flex-wrap content-start w-full h-full gap-2 p-3"
               v-if="tab == 'ingredients'"
             >
               <img
-                src="~/static/shower.png"
-                class="absolute inset-0 object-contain h-full mx-auto opacity-80 blur-[1px]"
+                v-if="item.images"
+                :src="item.images[0]"
+                class="absolute inset-0 object-contain h-full mx-auto opacity-20 blur-[1px]"
                 alt
               />
-              <template v-for="n in 2">
+              <template v-for="(el,i) in item.ingredients ">
                 <div
-                  data-tip="Chamomile Extract"
-                  class="p-2 rounded-md cursor-pointer bg-opacity-70ed-md tooltip hover:brightness-90 bg-slate-50"
+                  :key="i"
+                  :data-tip="el.name"
+                  class="w-20 h-20 p-2 bg-black rounded-md cursor-pointer bg-opacity-60 tooltip hover:brightness-90"
                 >
-                  <img src="~/static/item1.png" class="w-16" alt />
-                </div>
-
-                <div
-                  data-tip="Chamomile Extract"
-                  class="p-2 rounded-md cursor-pointer bg-opacity-70ed-md tooltip hover:brightness-90 bg-slate-50"
-                >
-                  <img src="~/static/item2.png" class="w-16" alt />
-                </div>
-                <div
-                  data-tip="Chamomile Extract"
-                  class="p-2 rounded-md cursor-pointer bg-opacity-70ed-md tooltip hover:brightness-90 bg-slate-50"
-                >
-                  <img src="~/static/item3.png" class="w-16" alt />
+                  <img :src="el.icon" class="object-contain w-full h-full" :alt="el.name" />
                 </div>
               </template>
             </figure>
@@ -109,11 +105,12 @@
               class="relative w-11/12 px-10 pb-5 mx-auto text-sm leading-[27px] bg-white pt-14 text-slate-500 line rounded-3xl"
             >
               <img
-                src="~/static/shower.png"
+                v-if="item.images"
+                :src="item.images[0]"
                 class="absolute object-contain h-32 -top-[80px] rtl:right-24 ltr:left-24"
                 alt
               />
-              Penduline Shower Gel Is A Unique Sulfate Free Formula Made Up Of Natural Preservative Mix & Natural Foaming Agents, First Time To Be Used In The Middle East. Penduline Shower Gel Is Made Up Nutritive Ingredients That Maintains Your Baby’s Moisturized. SLS Free, Paraben Free, And Free From Any Harmful Ingredients. Tear Free, Sensitivity Free And Dry Free. Safe To Be Used From Day 1. Sweet Fragrance
+              {{item.description}}
             </p>
 
             <!-- safety section -->
@@ -122,15 +119,13 @@
               class="relative w-11/12 px-10 pb-5 mx-auto text-sm leading-[27px] bg-white pt-14 text-slate-500 line rounded-3xl"
             >
               <img
-                src="~/static/shower.png"
+                v-if="item.images"
+                :src="item.images[0]"
                 class="absolute object-contain h-32 -top-[80px] rtl:right-24 ltr:left-24"
                 alt
               />
               <ul class="font-semibold list-disc">
-                <li>Prefered Age: 2 years and more</li>
-                <li>For skin use only</li>
-                <li>Safe for boys and girls</li>
-                <li>Keep It Away From Kid`S Hands</li>
+                <li>{{item.warnings}}</li>
               </ul>
             </div>
 
@@ -164,17 +159,17 @@
         <div class="w-full lg:w-1/3">
           <header class="pt-1 pb-4 capitalize">
             <small class="font-semibold text-slate-600">{{$t("name")}}</small>
-            <h5 class="text-2xl font-semibold text-slate-800">Penduline Shower Gel Sweet 65ml</h5>
+            <h5 class="text-2xl font-semibold text-slate-800">{{item.name}}</h5>
           </header>
 
           <p class="text-sm mb-5 leading-[27px] text-slate-600 font-semibold">
             <small class="block py-1 text-sm font-normal capitalize">{{$t("details")}}</small>
-            Penduline Shower Gel Is A Unique Sulfate Free Formula Made Up Of Natural Preservative Mix & Natural Foaming Agents, First Time To Be Used In The Middle East. Penduline Shower Gel Is Made Up Nutritive Ingredients That Maintains Your Baby’s Moisturized. SLS Free, Paraben Free, And Free From Any Harmful Ingredients. Tear Free, Sensitivity Free And Dry Free. Safe To Be Used From Day 1. Sweet Fragrance
+            {{item.description}}
           </p>
 
           <p class="text-sm leading-[27px] text-slate-600 font-semibold mb-5">
             <small class="block py-1 text-sm font-normal capitalize">{{$t("price")}}</small>
-            <span class="text-3xl">27 {{$t("egp")}}</span>
+            <span class="text-3xl">{{item.price}} {{$t("egp")}}</span>
           </p>
 
           <!-- actions -->
@@ -191,6 +186,7 @@
             <input
               class="p-1 text-sm font-semibold text-center rounded-full outline-none h-9 w-14 text-slate-600 bg-slate-100"
               v-model="quantity"
+              disabled
               type="number"
             />
 
@@ -205,17 +201,26 @@
             <button
               type="button"
               class="h-10 text-xs font-semibold capitalize border rounded-full w-36 click-scale border-theme1 text-slate-800 hover:bg-theme1 hover:bg-opacity-5"
+              @click="$addToCart(item, quantity)"
             >
               {{$t("add_to_cart")}}
               <BasketIcon class="inline-block w-4 h-4 mx-2 align-sub text-theme1" />
             </button>
 
-            <button
+            <!-- <button
               type="button"
               class="w-10 h-10 text-center rounded-full bg-opacity-10 bg-theme1 hover:bg-opacity-20 click-scale"
             >
               <HeartIcon class="w-5 h-5 mx-auto text-theme1" />
-            </button>
+            </button>-->
+            <label
+              class="w-10 h-10 text-center rounded-full bg-opacity-10 bg-theme1 hover:bg-opacity-20 click-scale swap swap-rotate"
+              v-if="$auth.user"
+            >
+              <input @click="handleFavProduct(item)" type="checkbox" :checked="isFavProduct(item)" />
+              <HeartIcon class="w-5 h-5 text-theme1 drop-shadow swap-off" />
+              <HeartCrossIcon class="w-5 h-5 text-theme1 drop-shadow swap-on" />
+            </label>
           </div>
         </div>
       </div>
@@ -262,7 +267,39 @@ export default {
     return {
       tab: "image",
       quantity: 1,
+      item: {},
     };
+  },
+  async mounted() {
+    const item = await this.$axios.$get(`/products/${this.$route.params.id}?include=ingredients,categories`)
+    this.item = item.data;
+    console.log(item.data)
+  },
+
+  methods: {
+    handleFavProduct(item) {
+      const items = this.$store.state.favorite.items;
+      const condition = items.some(el => el.id == item.id)
+
+      if (condition) {
+        this.$store.commit('favorite/deleteItem', item);
+        this.$toast.success('Removed from favorites');
+      } else {
+        this.$store.commit('favorite/appendItems', item);
+        this.$toast.success('Added from favorites');
+      }
+
+      // Save in local storage
+      this.$auth.$storage.setLocalStorage("favProducts", this.$store.state.favorite.items);
+    },
+    isFavProduct(item) {
+      const items = this.$store.state.favorite.items;
+      const isFound = items.some(el => el.id == item.id)
+      if (isFound) {
+        return true
+      }
+      return false
+    },
   },
 };
 </script>

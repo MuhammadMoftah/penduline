@@ -45,9 +45,10 @@
         <div class="relative" v-else>
           <button
             type="button"
-            class="flex items-center gap-2 p-2 text-xs font-medium capitalize bg-transparent rounded-lg click-scale text-slate-600 hover:bg-slate-100"
+            class="flex items-center gap-1 px-2 py-1 text-xs font-medium capitalize bg-transparent rounded-lg click-scale text-slate-600 hover:bg-slate-100"
             @click="profileMenu = !profileMenu"
           >
+            <span>{{$auth.user.name}}</span>
             <img
               v-if="$auth.user.avata"
               :src="$auth.user.avatar"
@@ -57,7 +58,6 @@
             <span v-else>
               <UserIcon class="w-4 h-4 lg:w-5 lg:h-5 text-slate-600" />
             </span>
-            <span>{{$auth.user.name}}</span>
           </button>
           <transition name="slide-in-Y">
             <ul
@@ -72,7 +72,7 @@
                 </a>
               </li>
               <li class="text-red-500">
-                <a @click.prevent="$auth.logout()">
+                <a @click.prevent="logout()">
                   <LogoutIcon class="w-4 h-4" />
                   {{$t('logout')}}
                 </a>
@@ -140,6 +140,10 @@ export default {
         // this.$nuxt.refresh();
       });
     },
+
+    logout() {
+      this.$auth.logout()
+    }
   },
 };
 </script>

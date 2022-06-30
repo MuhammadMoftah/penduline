@@ -20,24 +20,27 @@
             style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"
           >{{item.description}}</p>
         </aside>
-        <p v-if="!gift" class="font-semibold">
+
+        <p v-if="!gift && !hidePrice" class="font-semibold">
           {{item.price}} {{$t('egp')}}
           <span
             v-if="discount"
             class="mx-1 text-sm font-semibold line-through text-slate-400"
           >115 {{$t('egp')}}</span>
         </p>
-        <p v-else class="font-bold text-theme1">768 {{$t('points')}}</p>
+        <p v-if="gift && !hidePrice" class="font-bold text-theme1">768 {{$t('points')}}</p>
       </article>
 
       <!-- actions -->
       <div class="flex items-center mt-4">
-        <button
-          type="button"
-          class="w-10 h-10 text-center rounded-full ltr:mr-5 rtl:ml-5 bg-opacity-10 bg-theme1 hover:bg-opacity-20 click-scale"
+        <label
+          class="w-10 h-10 text-center rounded-full ltr:mr-5 rtl:ml-5 bg-opacity-10 bg-theme1 hover:bg-opacity-20 click-scale swap swap-rotate"
         >
-          <HeartIcon class="w-5 h-5 mx-auto text-theme1" />
-        </button>
+          <input type="checkbox" />
+          <!-- <HeartIcon class="w-5 h-5 mx-auto text-theme1" /> -->
+          <HeartIcon class="w-6 h-6 text-theme1 drop-shadow swap-off" />
+          <HeartCrossIcon class="w-6 h-6 text-theme1 drop-shadow swap-on" />
+        </label>
 
         <button
           v-if="!gift"
@@ -69,12 +72,12 @@
 export default {
   props: ["gift", "discount", "item"],
   methods: {
-    routerHandler(id) {
+    routerHandler() {
       if (this.gift) {
-        this.$router.push(this.localePath("/scratch-win/23"));
+        this.$router.push(this.localePath(`/scratch-win/${this.item.id}`));
         return;
       }
-      this.$router.push(this.localePath("/products/23"));
+      this.$router.push(this.localePath(`/products/${this.item.id}`));
     },
   },
 };

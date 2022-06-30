@@ -21,8 +21,8 @@ export default {
   beforeMount() {
     this.setFont();
 
-    //syncCart with localStorage
-    this.$syncCart();
+    //sync Local Data with Vuex
+    this.syncLocalData();
   },
   created() {
     this.setAxios();
@@ -46,6 +46,24 @@ export default {
           "'Manrope', sans-serif"
         );
       }
+    },
+    syncLocalData() {
+      //sync cart data with Vuex
+      if (this.$auth.$storage.getLocalStorage("cartItems")) {
+        this.$store.commit(
+          "cart/items",
+          this.$auth.$storage.getLocalStorage("cartItems")
+        );
+      }
+
+      //sync favorite data with Vuex
+      if (this.$auth.$storage.getLocalStorage("favProducts")) {
+        this.$store.commit(
+          "favorite/items",
+          this.$auth.$storage.getLocalStorage("favProducts")
+        );
+      }
+
     },
   },
   computed: {

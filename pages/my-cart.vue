@@ -56,12 +56,11 @@
           </p>
         </div>
 
-        <NuxtLink
-          :to="localePath('/checkout')"
-          tag="button"
+        <button
+          @click="goToCheckout()"
           type="button"
           class="mt-6 theme-btn click-scale"
-        >{{$t('next')}}</NuxtLink>
+        >{{$t('next')}}</button>
       </aside>
     </div>
   </section>
@@ -71,6 +70,15 @@
 export default {
   name: "MyCart",
 
+  methods: {
+    goToCheckout() {
+      if (this.$auth.user) {
+        this.$router.push(this.localePath('/checkout'))
+        return
+      }
+      this.$store.commit('global/modal', 'login')
+    }
+  },
   computed: {
     cartItems() {
       return this.$store.getters["cart/items"];

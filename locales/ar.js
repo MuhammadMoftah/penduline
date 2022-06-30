@@ -188,5 +188,6 @@ export default {
   high: "عالي",
   edit_address: "تعديل العنوان",
   see_all: "عرض الكل",
+  login_with_new: "تم، منفضلك قم بالدخول بالبيانات الجديدة",
   key: "",
 };

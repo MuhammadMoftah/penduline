@@ -24,14 +24,14 @@
         >{{item.description? item.description: this.$t('lorem')}}</p>
       </aside>
 
-      <p v-if="!gift" class="font-semibold">
+      <p v-if="!gift && !hidePrice" class="font-semibold">
         {{item.price ? item.price :'75'}} {{$t('egp')}}
         <span
           v-if="discount"
           class="mx-1 text-sm font-semibold line-through text-slate-400"
         >{{item.price ? item.price :'75'}} {{$t('egp')}}</span>
       </p>
-      <p v-else class="font-bold text-theme1">798 {{$t('points')}}</p>
+      <p v-if="gift && !hidePrice" class="font-bold text-theme1">798 {{$t('points')}}</p>
     </article>
 
     <!-- actions -->
@@ -56,12 +56,14 @@
         <CodeIcon class="inline-block w-4 h-4 mx-2 align-sub text-theme1" />
       </button>
 
-      <button
-        type="button"
-        class="w-10 h-10 text-center rounded-full bg-opacity-10 bg-theme1 hover:bg-opacity-20 click-scale"
+      <label
+        class="w-10 h-10 text-center rounded-full bg-opacity-10 bg-theme1 hover:bg-opacity-20 click-scale swap swap-rotate"
+        v-if="$auth.user"
       >
-        <HeartIcon class="w-5 h-5 mx-auto text-theme1" />
-      </button>
+        <input @click="handleFavProduct(item)" type="checkbox" :checked="isFavProduct(item)" />
+        <HeartIcon class="w-5 h-5 text-theme1 drop-shadow swap-off" />
+        <HeartCrossIcon class="w-5 h-5 text-theme1 drop-shadow swap-on" />
+      </label>
     </div>
     <span
       v-if="discount"
@@ -86,17 +88,43 @@ export default {
       type: Boolean,
       default: false,
     },
+    hidePrice: {
+      type: Boolean,
+      default: false,
+    },
   },
 
-  mounted() { },
-  computed: {},
   methods: {
-    routerHandler(id) {
+    routerHandler() {
       if (this.gift) {
-        this.$router.push(this.localePath("/scratch-win/23"));
+        this.$router.push(this.localePath(`/scratch-win/${this.item.id}`));
         return;
       }
-      this.$router.push(this.localePath("/products/23"));
+      this.$router.push(this.localePath(`/products/${this.item.id}`));
+    },
+    handleFavProduct(item) {
+      const items = this.$store.state.favorite.items;
+      const condition = items.some(el => el.id == item.id)
+
+      if (condition) {
+        this.$store.commit('favorite/deleteItem', item);
+        this.$toast.success('Removed from favorites');
+      } else {
+        this.$store.commit('favorite/appendItems', item);
+        this.$toast.success('Added from favorites');
+      }
+
+
+      // Save in local storage
+      this.$auth.$storage.setLocalStorage("favProducts", this.$store.state.favorite.items);
+    },
+    isFavProduct(item) {
+      const items = this.$store.state.favorite.items;
+      const isFound = items.some(el => el.id == item.id)
+      if (isFound) {
+        return true
+      }
+      return false
     },
   },
 };

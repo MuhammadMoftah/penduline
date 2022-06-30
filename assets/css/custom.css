@@ -39,8 +39,6 @@
   .theme-btn {
     @apply w-full h-12 text-sm font-semibold text-center text-white uppercase rounded-md ltr:tracking-widest bg-gradient-to-r from-theme0 to-theme1;
   }
-
- 
 }
 
 html {
@@ -72,6 +70,10 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-theme2;
+}
+
+.scrollSmaller::-webkit-scrollbar {
+  @apply w-[1.5px] xl:w-[2px] h-3;
 }
 
 /* hide number input arrow  */
@@ -196,5 +198,3 @@ input[type="number"] {
 .toasted {
   @apply py-5 text-base font-medium rounded-lg !important;
 }
-
-

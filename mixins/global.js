@@ -82,11 +82,10 @@ var mixin = {
 
       return result;
     },
-    $addToCart(item) {
-      const cartItems = this.$store.state.cart.items;
+    $addToCart(item, quantity) {
       const newItem = {
         ...item,
-        quantity: 1,
+        quantity: quantity ?? 1,
       };
       if (this.$store.state.cart.items.some((el) => el.id == newItem.id)) {
         this.$store.commit("cart/itemPlus", newItem);
@@ -99,14 +98,6 @@ var mixin = {
         this.$store.state.cart.items
       );
       this.$toast.success(this.$t("item_added_to_cart"));
-    },
-    $syncCart() {
-      if (this.$auth.$storage.getLocalStorage("cartItems")) {
-        this.$store.commit(
-          "cart/items",
-          this.$auth.$storage.getLocalStorage("cartItems")
-        );
-      }
     },
   },
 };

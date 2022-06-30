@@ -5,11 +5,14 @@
       <button
         type="button"
         @click="clearFilters"
-        class="text-sm font-semibold capitalize text-theme1 click-scale"
+        class="text-sm font-semibold capitalize opacity-0 text-theme1 click-scale"
       >{{$t('clear')}}</button>
     </div>
 
-    <CollapseFilter class="my-4 overflow-auto capitalize max-h-72" :title="$t('categories')">
+    <CollapseFilter
+      class="my-4 overflow-auto capitalize max-h-72 scrollSmaller"
+      :title="$t('categories')"
+    >
       <FiltersSelect url="/categories" v-model="categories" />
     </CollapseFilter>
 
@@ -21,19 +24,31 @@
       </div>
     </CollapseFilter>
 
-    <CollapseFilter class="my-4 overflow-auto capitalize max-h-72" :title="$t('ingredients')">
+    <CollapseFilter
+      class="my-4 overflow-auto capitalize max-h-72 scrollSmaller"
+      :title="$t('ingredients')"
+    >
       <FiltersSelect url="/ingredients" v-model="ingredients" />
     </CollapseFilter>
 
-    <CollapseFilter class="my-4 overflow-auto capitalize max-h-72" :title="$t('hair_type')">
+    <CollapseFilter
+      class="my-4 overflow-auto capitalize max-h-72 scrollSmaller"
+      :title="$t('hair_type')"
+    >
       <FiltersSelect :arrayOfObjects="hairTypeFilters" v-model="hairType" />
     </CollapseFilter>
 
-    <CollapseFilter class="my-4 overflow-auto capitalize max-h-72" :title="$t('hair_porosity')">
+    <CollapseFilter
+      class="my-4 overflow-auto capitalize max-h-72 scrollSmaller"
+      :title="$t('hair_porosity')"
+    >
       <FiltersSelect :arrayOfObjects="hairProtinFilters" v-model="hairPorosity" />
     </CollapseFilter>
 
-    <CollapseFilter class="my-4 overflow-auto capitalize max-h-72" :title="$t('hair_protein')">
+    <CollapseFilter
+      class="my-4 overflow-auto capitalize max-h-72 scrollSmaller"
+      :title="$t('hair_protein')"
+    >
       <FiltersSelect :arrayOfObjects="hairProtinFilters" v-model="hairProtein" />
     </CollapseFilter>
   </section>
