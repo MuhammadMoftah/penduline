@@ -76,6 +76,15 @@ html {
   @apply w-[1.5px] xl:w-[2px] h-3;
 }
 
+.input {
+  @apply w-full h-12 px-4 text-sm font-semibold border rounded-md appearance-none ltr:tracking-wider text-slate-500 bg-slate-50 border-slate-200 outline-theme2;
+}
+.mx-datepicker {
+  @apply !w-full;
+}
+.mx-datepicker .mx-input-wrapper input {
+  @apply input;
+}
 /* hide number input arrow  */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

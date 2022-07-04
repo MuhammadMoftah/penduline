@@ -132,7 +132,11 @@ export default {
     return {
       tab: "profile",
       profileImage: "",
+      children: []
     };
+  },
+  fetch() {
+    this.getChildren()
   },
   computed: {
     modal() {
@@ -143,6 +147,14 @@ export default {
     }
   },
   methods: {
+    getChildren() {
+      this.$axios.get('/children').then(res => {
+        this.children = res.data.data
+      }).catch(err => {
+        this.$errorHandler(err)
+      })
+
+    },
     setTab(tab) {
       this.tab = tab;
     },
