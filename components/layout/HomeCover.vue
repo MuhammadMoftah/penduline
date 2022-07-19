@@ -12,48 +12,52 @@
         <div class="relative h-[105vh]">
           <img
             class="object-cover w-full h-full"
-            src="https://images.pexels.com/photos/973401/pexels-photo-973401.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+            :src="require('@/static/home-banners/3-lines-slider.jpg')"
             alt
           />
-          <button
-            type="button"
-            class="absolute left-0 right-0 h-12 mx-auto text-lg uppercase duration-300 rounded-full shadow-2xl lg:h-16 lg:text-2xl px-14 shadow-pink-500 w-fit bottom-20 lg:bottom-24 theme-btn ltr:tracking-widest click-scale hover:-translate-y-3"
-          >{{$t('shop_now')}}</button>
+          <NuxtLink
+            @click.native="toProducts('')"
+            :to="localePath('/products')"
+            class="absolute left-0 right-0 flex items-center h-12 mx-auto text-lg uppercase duration-300 rounded-full shadow-2xl lg:h-16 lg:text-2xl px-14 shadow-pink-500 w-fit bottom-20 lg:bottom-24 theme-btn ltr:tracking-widest click-scale hover:-translate-y-3"
+          >{{$t('shop_now')}}</NuxtLink>
         </div>
 
         <div class="relative h-[105vh]">
           <img
             class="object-cover w-full h-full"
-            src="https://images.pexels.com/photos/34763/baby-sleeping-baby-baby-girl.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+            :src="require('@/static/home-banners/baby-slider.jpg')"
             alt
           />
-          <button
-            type="button"
-            class="absolute left-0 right-0 h-12 mx-auto text-lg uppercase duration-300 rounded-full shadow-2xl lg:h-16 lg:text-2xl px-14 shadow-pink-500 w-fit bottom-20 lg:bottom-24 theme-btn ltr:tracking-widest click-scale hover:-translate-y-3"
-          >{{$t('shop_now')}}</button>
+          <NuxtLink
+            @click.native="toProducts(15)"
+            :to="{ path:localePath('/products') , query:{ 'filter[categories.id]':15 }}"
+            class="absolute left-0 right-0 flex items-center h-12 mx-auto text-lg uppercase duration-300 rounded-full shadow-2xl lg:h-16 lg:text-2xl px-14 shadow-pink-500 w-fit bottom-20 lg:bottom-24 theme-btn ltr:tracking-widest click-scale hover:-translate-y-3"
+          >{{$t('shop_now')}}</NuxtLink>
         </div>
         <div class="relative h-[105vh]">
           <img
             class="object-cover w-full h-full"
-            src="https://images.pexels.com/photos/3662667/pexels-photo-3662667.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+            :src="require('@/static/home-banners/curly-slider.jpg')"
             alt
           />
-          <button
-            type="button"
-            class="absolute left-0 right-0 h-12 mx-auto text-lg uppercase duration-300 rounded-full shadow-2xl lg:h-16 lg:text-2xl px-14 shadow-pink-500 w-fit bottom-20 lg:bottom-24 theme-btn ltr:tracking-widest click-scale hover:-translate-y-3"
-          >{{$t('shop_now')}}</button>
+          <NuxtLink
+            @click.native="toProducts(5)"
+            :to="{ path:localePath('/products') , query:{ 'filter[categories.id]':5 }}"
+            class="absolute left-0 right-0 flex items-center h-12 mx-auto text-lg uppercase duration-300 rounded-full shadow-2xl lg:h-16 lg:text-2xl px-14 shadow-pink-500 w-fit bottom-20 lg:bottom-24 theme-btn ltr:tracking-widest click-scale hover:-translate-y-3"
+          >{{$t('shop_now')}}</NuxtLink>
         </div>
 
         <div class="relative h-[105vh]">
           <img
             class="object-cover w-full h-full"
-            src="https://images.pexels.com/photos/3662910/pexels-photo-3662910.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+            :src="require('@/static/home-banners/kids-slider.jpg')"
             alt
           />
-          <button
-            type="button"
-            class="absolute left-0 right-0 h-12 mx-auto text-lg uppercase duration-300 rounded-full shadow-2xl lg:h-16 lg:text-2xl px-14 shadow-pink-500 w-fit bottom-20 lg:bottom-24 theme-btn ltr:tracking-widest click-scale hover:-translate-y-3"
-          >{{$t('shop_now')}}</button>
+          <NuxtLink
+            @click.native="toProducts(7)"
+            :to="{ path:localePath('/products') , query:{ 'filter[categories.id]':7 }}"
+            class="absolute left-0 right-0 flex items-center h-12 mx-auto text-lg uppercase duration-300 rounded-full shadow-2xl lg:h-16 lg:text-2xl px-14 shadow-pink-500 w-fit bottom-20 lg:bottom-24 theme-btn ltr:tracking-widest click-scale hover:-translate-y-3"
+          >{{$t('shop_now')}}</NuxtLink>
         </div>
       </VueSlickCarousel>
     </section>
@@ -94,7 +98,6 @@
           {{$t("skin_care")}}
         </NuxtLink>
 
-     
         <NuxtLink
           class="flex items-center justify-center w-full font-semibold text-white bg-right bg-no-repeat click-scale text-opacity-90"
           :to="localePath('/products')"
@@ -118,12 +121,24 @@ export default {
   data() {
     return {};
   },
+
+  methods: {
+    async toProducts(categoryId) {
+      this.$router.push({ path: this.$route.path, query: { 'filter[categories.id]': categoryId } });
+      const payload = {
+        query: this.$route.query,
+      };
+      // await this.$store.dispatch("products/getItems", payload);
+      await this.$store.dispatch("products/getItems");
+      this.$nuxt.refresh()
+    }
+  }
 };
 </script>
 
 <style scoped>
 >>> .slick-dots {
-  @apply flex flex-col absolute top-[30%] right-0 w-auto !important;
+  @apply flex flex-col absolute top-[37%] right-0 w-auto !important;
 }
 >>> .slick-dots li {
   @apply mb-6;

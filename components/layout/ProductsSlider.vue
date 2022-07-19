@@ -90,7 +90,6 @@ export default {
         .get(this.endpoint)
         .then((response) => {
           this.items = response.data.data;
-          console.log('items', this.items)
         })
         .catch((err) => this.$errorHandler(err));
     },

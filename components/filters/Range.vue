@@ -40,11 +40,10 @@ export default {
   data() {
     return {};
   },
-  created() {},
+  created() { },
   methods: {
     change(value) {
       this.$emit("input", value);
-      // console.log("range", value);
     },
   },
 };

@@ -60,7 +60,7 @@ export default {
   lorem:
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque cupiditate odio sint ipsa facere rerum veritatis ut explicabo magni ea iure corrupti, ad unde impedit nihil quam ipsam sit fugiat?",
   penduline_info:
-    "Penduline is an Egyptian brand that makes 100% natural products for kids' hair and skin of all ages. All of our products are free from any chemicals or preservatives so it so safe for your kids and it also provides many benefits for their skin and hair",
+    "Penduline is an Egyptian brand belongs to Semak for Cosmetics launched in Egypt since 2015 with the vision of having a full portfolio of 100% natural kids care products to meet all kids’ needs and safe to be used starting from day one of birth. All Penduline products are free of chemicals or any ingredients like paraben, alcohol and sulfate that may harm kids’ skin or hair. So Penduline is the safest for the kids’ skin and hair.",
   from: "from",
   to: "to",
   am: "AM",
@@ -201,5 +201,6 @@ export default {
   upload: "Upload",
   relation: "Relation",
   birthdate: "Birthdate",
+  friday_off: "Friday off",
   key: "",
 };

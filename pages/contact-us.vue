@@ -25,7 +25,7 @@
 
           <p
             class="mb-2 text-sm capitalize"
-          >{{$t("from")}} 10 {{$t("am")}} {{$t("to")}} 6 {{$t("pm")}}</p>
+          >{{$t("from")}} 10 {{$t("am")}} {{$t("to")}} 6 {{$t("pm")}} ({{$t('friday_off')}})</p>
 
           <p class="flex items-center text-sm capitalize">
             <span class>{{$t("phone")}}:</span>

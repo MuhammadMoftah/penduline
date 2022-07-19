@@ -74,7 +74,7 @@
       ></div>
       <iframe
         class="w-full h-[400px] max-w-3xl"
-        src="https://www.youtube.com/embed/kf4woPY5gxQ"
+        src="https://www.youtube.com/embed/uosSV7IeeFA"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

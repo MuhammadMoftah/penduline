@@ -164,7 +164,6 @@ export default {
           const payload = {
             query: this.$route.query,
           };
-          console.log('after then', this.$route.query)
           this.$store.dispatch("products/getItems", payload);
         })
         .catch((err) => { });

@@ -270,10 +270,9 @@ export default {
       item: {},
     };
   },
-  async mounted() {
+  async fetch() {
     const item = await this.$axios.$get(`/products/${this.$route.params.id}?include=ingredients,categories`)
     this.item = item.data;
-    console.log(item.data)
   },
 
   methods: {

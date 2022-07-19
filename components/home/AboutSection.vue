@@ -96,30 +96,17 @@ export default {
   data: () => ({
     slides: [
       {
-        src: "https://images.unsplash.com/photo-1578269174936-2709b6aeb913?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
+        src: require('~/static/awards/01.jpg'),
       },
       {
-        src: "https://images.unsplash.com/photo-1594122230689-45899d9e6f69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1580674287546-e5e105fb2541?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1550438655-400744b9fefc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80",
-      },
-      {
-        src: "https://images.pexels.com/photos/6250942/pexels-photo-6250942.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      },
-      {
-        src: "https://images.pexels.com/photos/6251002/pexels-photo-6251002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      },
+        src: require('~/static/awards/02.jpg'),
+      }
     ],
   }),
 
   methods: {
     changeText() {
-      console.log(this.$refs.slider);
-      console.log(this.$refs.test);
+
     },
   },
 };
