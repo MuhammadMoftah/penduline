@@ -19,7 +19,7 @@
     </div>
     <VueSlickCarousel v-bind="sliderSettings" ref="slider">
       <div class="pt-20" v-for="n in 11" :key="n">
-        <PosCard :img="require(`~/static/pos-section/Logos-${n}.png`)" :title="`pharmacy 0${n}`" />
+        <PosCard :img="require(`~/static/pos-section/Logos-${n}.png`)" />
       </div>
     </VueSlickCarousel>
   </section>
@@ -43,6 +43,7 @@ export default {
         speed: 300,
         slidesToShow: 4,
         slidesToScroll: 1,
+        autoplay: true,
         swipeToSlide: true,
         responsive: [
           {

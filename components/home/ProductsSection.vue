@@ -21,7 +21,7 @@
 
       <PartitionCard
         :title="this.$t('penduline_curly')"
-        :desc="'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas at tenetur similique, doloremque dicta cum veniam quia eligendi excepturi obcaecati harum dolorum iste consequatur ut accusamus culpa. Explicabo, ex voluptate!'"
+        :desc="this.$t('curly_hero_desc')"
         :img="require('@/static/home-banners/curly-slider.jpg')"
         route="/products?filter[categories.id]=5"
         class="shadow-lg"

@@ -216,5 +216,8 @@ export default {
   penduline_curly: "Penduline curly",
   baby_hero_desc: `Penduline baby water wipes are the first water wipes in Egypt market that contains 90% water, enriched with natural anti-inflammatory and moisturizing factors like Calendula, Aloe vera and Vitamin E. It is free from Alcohol and fragrances and suitable for all skin types.`,
   water_baby_wipes: "Water baby wipes",
+  curly_hero_desc: `Curly hair is a special kind of hair, we at Penduline Curly care more for your beautiful curly hair with our unique products.
+  Penduline Curly is a natural and organic shampoo and conditioner for all curly hair types. It is enriched with natural ingredients like grape seed oil, shea butter and argan oil to nourish your curls.
+  Our products are gentle enough to be used every day while leaving your curls hydrated, soft and frizz-free.`,
   key: "",
 };
