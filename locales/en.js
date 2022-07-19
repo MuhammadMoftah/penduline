@@ -202,5 +202,10 @@ export default {
   relation: "Relation",
   birthdate: "Birthdate",
   friday_off: "Friday off",
+  iso_desc: `Brand got ISO certification which is the highest international standard for quality management.
+  Semak has always been committed to delivering the highest quality services to our customers and this ISO certification is a testament to our commitment. It also ensures that we are in line with international standards and best practices.`,
+  gmp_desc: `Brand factory got GMP certification. It is a quality certification that ensures the products are manufactured in a clean and controlled environment.
+  Penduline has been manufacturing products for more than 10 years, but it was not until recently that they decided to get this certification. They got it because they wanted to make sure that their customers can be sure of the quality of the products they manufacture.`,
+  award: "Arward",
   key: "",
 };

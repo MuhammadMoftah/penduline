@@ -29,7 +29,7 @@
         :display="4"
         :perspective="20"
       >
-        <slide v-for="(slide, i) in slides" :index="i" :key="i" @click.native="changeText()">
+        <slide v-for="(slide, i) in slides" :index="i" :key="i" @click.native="changeText(slide)">
           <template slot-scope="{ index, isCurrent, leftIndex, rightIndex }">
             <img
               :data-index="index"
@@ -41,18 +41,17 @@
         </slide>
       </carousel-3d>
       <div class="mt-6">
-        <h5 class="text-4xl font-black ltr:text-right rtl:text-left">Award Name Here</h5>
-        <h5 class="text-4xl font-black ltr:text-right rtl:text-left">Example Text</h5>
+        <h5 class="text-4xl font-black ltr:text-right rtl:text-left">Award</h5>
 
         <div
           class="p-7 mt-6 rounded-sm shadow-lg shadow-slate-200 relative bg-white z-10 lg:w-[450px] lg:rtl:mr-[-90px] lg:ltr:ml-[-90px]"
         >
-          <h5 class="mb-2 text-lg font-bold">Main Title</h5>
+          <h5 class="mb-2 text-lg font-bold">{{activeSlide.title}}</h5>
           <p
-            class="font-semibold text-xs text-slate-400 leading-[26px]"
-          >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto officia dolore nostrum consequuntur, minima quae illum sint aut provident recusandae eligendi quia nam ipsam ad dolores. Odio, nulla dolorem? Quae?</p>
+            class="font-semibold text-xs text-slate-400 leading-[26px] whitespace-pre-line"
+          >{{activeSlide.desc}}</p>
 
-          <p class="mt-10 text-xs text-slate-500">Newcairo, Egypt</p>
+          <p class="mt-10 text-xs text-slate-500">Cairo, Egypt</p>
           <div class="flex gap-3 mt-2 text-slate-500">
             <a
               href="https://twitter.com/Penduline_kids"
@@ -93,20 +92,31 @@
 
 <script>
 export default {
-  data: () => ({
-    slides: [
-      {
+  data() {
+    return {
+      slides: [
+        {
+          src: require('~/static/awards/01.jpg'),
+          title: 'ISO',
+          desc: this.$t('iso_desc'),
+        },
+        {
+          src: require('~/static/awards/02.jpg'),
+          title: 'GMP',
+          desc: this.$t('gmp_desc'),
+        }
+      ],
+      activeSlide: {
         src: require('~/static/awards/01.jpg'),
+        title: 'ISO',
+        desc: this.$t('iso_desc'),
       },
-      {
-        src: require('~/static/awards/02.jpg'),
-      }
-    ],
-  }),
+    }
+  },
 
   methods: {
-    changeText() {
-
+    changeText(slide) {
+      this.activeSlide = slide
     },
   },
 };

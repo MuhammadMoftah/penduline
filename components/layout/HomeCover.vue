@@ -130,7 +130,7 @@ export default {
       };
       // await this.$store.dispatch("products/getItems", payload);
       await this.$store.dispatch("products/getItems");
-      this.$nuxt.refresh()
+
     }
   }
 };
