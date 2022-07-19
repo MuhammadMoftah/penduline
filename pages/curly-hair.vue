@@ -14,7 +14,7 @@
 
     <section class="-mt-16">
       <HeroSection
-        :title="$t('about_penduline')"
+        :title="'Hero Title'"
         :desc="$t('penduline_info')"
         :img="'imgSRC'"
         :link="'customLink'"

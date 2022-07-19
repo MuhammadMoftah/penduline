@@ -14,13 +14,14 @@
         >{{$t('hero_product')}}</h5>
         <h5
           class="mt-16 mb-1 text-2xl font-semibold text-white capitalize drop-shadow-md ltr:tracking-wide"
-        >Penduline Shower Gel</h5>
+        >{{title}}</h5>
         <p class="text-lg leading-9 text-white text-opacity-90">{{desc}}</p>
       </article>
 
       <figure class="flex flex-col items-center w-full py-5 pb-32 lg:pb-0">
-        <img class="object-contain mb-6 h-[400px] mx-auto w-fit" src="~/static/shower.png" alt />
+        <img class="object-contain mb-6 h-[400px] mx-auto w-fit" v-if="img" :src="img" alt />
         <NuxtLink
+          v-if="link"
           tag="button"
           type="button"
           :to="localePath('/products/25')"

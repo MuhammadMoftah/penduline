@@ -207,5 +207,14 @@ export default {
   gmp_desc: `Brand factory got GMP certification. It is a quality certification that ensures the products are manufactured in a clean and controlled environment.
   Penduline has been manufacturing products for more than 10 years, but it was not until recently that they decided to get this certification. They got it because they wanted to make sure that their customers can be sure of the quality of the products they manufacture.`,
   award: "Arward",
+  penduline_baby: "Penduline baby",
+  penduline_kids: "Penduline kids",
+  penduline_baby_desc: `We do believe that every baby deserves the best care possible, which is why we strive to provide the safest, most gentle products for newborns and babies. We are proud to be able to offer not only amazing products but also the knowledge that comes from over 10 years of experience in the child care industry.`,
+  penduline_kids_desc: `More than one million Moms trust and depend on Penduline as the safest and best choice for d
+  Penduline is the safest products are made of natural ingredients and are free of harmful ingredients. They are safe for kids and can be used by people with different hair types sensitive skin.
+  Penduline products are made of natural ingredients and they have been tested to be safe for kids. The products are also safe for people with sensitive skin, so they can be used by both adults and children.`,
+  penduline_curly: "Penduline curly",
+  baby_hero_desc: `Penduline baby water wipes are the first water wipes in Egypt market that contains 90% water, enriched with natural anti-inflammatory and moisturizing factors like Calendula, Aloe vera and Vitamin E. It is free from Alcohol and fragrances and suitable for all skin types.`,
+  water_baby_wipes: "Water baby wipes",
   key: "",
 };

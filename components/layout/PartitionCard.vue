@@ -13,12 +13,9 @@
       <aside>
         <h5 class="font-semibold">{{title}}</h5>
         <p
-          class="overflow-hidden text-sm leading-[20px] text-slate-500 h-16"
-          style="
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-          "
+          class="overflow-hidden text-sm leading-[20px] text-slate-500"
+          style="display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;"
+          :title="desc"
         >{{desc}}</p>
       </aside>
     </article>
@@ -37,7 +34,7 @@
 <script>
 export default {
   props: ["title", "desc", "img", "route"],
-  mounted() {},
+  mounted() { },
   methods: {},
 };
 </script>

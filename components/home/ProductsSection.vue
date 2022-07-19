@@ -5,24 +5,24 @@
     </div>
     <section class="grid grid-cols-1 gap-4 mt-12 md:grid-cols-2 lg:grid-cols-3">
       <PartitionCard
-        :title="'Penduline Baby'"
-        :desc="'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas at tenetur similique, doloremque dicta cum veniam quia eligendi excepturi obcaecati harum dolorum iste consequatur ut accusamus culpa. Explicabo, ex voluptate!'"
-        :img="'https://cdn.pixabay.com/photo/2018/05/11/07/45/mother-3389671_960_720.jpg'"
+        :title="this.$t('penduline_baby')"
+        :desc="this.$t('penduline_baby_desc')"
+        :img="require('@/static/home-banners/baby-slider.jpg')"
         route="/products?filter[categories.id]=2"
         class="shadow-lg"
       />
       <PartitionCard
-        :title="'Penduline Kids'"
-        :desc="'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas at tenetur similique, doloremque dicta cum veniam quia eligendi excepturi obcaecati harum dolorum iste consequatur ut accusamus culpa. Explicabo, ex voluptate!'"
-        :img="'https://cdn.pixabay.com/photo/2015/06/22/08/38/children-817368_960_720.jpg'"
+        :title="this.$t('penduline_kids')"
+        :desc="this.$t('penduline_kids_desc')"
+        :img="require('@/static/home-banners/kids-slider.jpg')"
         route="/products?filter[categories.id]=7"
         class="shadow-lg"
       />
 
       <PartitionCard
-        :title="'Penduline Curly'"
+        :title="this.$t('penduline_curly')"
         :desc="'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas at tenetur similique, doloremque dicta cum veniam quia eligendi excepturi obcaecati harum dolorum iste consequatur ut accusamus culpa. Explicabo, ex voluptate!'"
-        :img="'https://images.pexels.com/photos/1862655/pexels-photo-1862655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'"
+        :img="require('@/static/home-banners/curly-slider.jpg')"
         route="/products?filter[categories.id]=5"
         class="shadow-lg"
       />

@@ -14,9 +14,9 @@
 
     <section class="-mt-16">
       <HeroSection
-        :title="$t('about_penduline')"
-        :desc="$t('penduline_info')"
-        :img="'imgSRC'"
+        :title="$t('water_baby_wipes')"
+        :desc="$t('baby_hero_desc')"
+        :img="require(`@/static/baby-hero-product.png`)"
         :link="'customLink'"
       />
     </section>
