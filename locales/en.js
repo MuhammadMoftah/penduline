@@ -93,7 +93,8 @@ export default {
   more: "more",
   new_baby_care: "New baby care",
   register: "Register",
-  join_family: "Join our family",
+  join_family: "Join our family now",
+  join_now: "Join now",
   welcome_back: "Welcome back",
   mobile: "Mobile",
   password: "Password",
@@ -266,5 +267,10 @@ export default {
 2. Penduline water wipes are free from alcohol and fragrance that exist in traditional wipes and cause diaper rash. So, penduline diaper rash is the safest to clean the babies’ skin.
 3. Penduline water wipes are very soft on the skin and do not cause skin redness and contain moisturizers like glycerin, Aleo Vera, calendula and vitamin E) to ensure deep moisturization and skin protection from dryness and inflammation.
 Thus, penduline water wipes is the safest choice to ensure the baby’s skin cleansing and protection`,
+  scratch_pref_title: `Here is tips
+  you can follow to 
+  scratch & win.`,
+  scratch_pref_desc: `When asked, “If you could wish for one thing only, what would that wish be?” almost everyone; from beauty pagent contestants, to politicians`,
+  ready_for_free_products: "Ready for free products",
   key: "",
 };
