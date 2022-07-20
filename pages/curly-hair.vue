@@ -29,14 +29,16 @@
       />
     </section>
 
-    <section class="container mt-32">
+    <section class="container mt-32 font-tajawal" dir="rtl">
       <!-- Q/A section -->
       <h5
         class="mb-16 text-3xl font-semibold text-center capitalize text-slate-800"
       >{{$t("we_answer_questions")}}</h5>
       <section class="p-10 rounded-lg bg-slate-100">
-        <CollapseQuestion :title="$t('question1')" v-for="n in 1" :key="n" class="mb-6">
-          <p class="text-sm leading-[27px] font-semibold">{{$t('answer1')}}</p>
+        <CollapseQuestion :title="$t(`curly_qu${n}`)" v-for="n in 8" :key="n" class="mb-6">
+          <p
+            class="text-sm leading-[27px] font-semibold whitespace-pre-line"
+          >{{$t(`curly_ans${n}`)}}</p>
         </CollapseQuestion>
       </section>
     </section>

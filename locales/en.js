@@ -81,10 +81,6 @@ export default {
   info_about_us: "Some Info About Us",
   send_us_message: "Send us message",
   we_answer_questions: "We answer all questions",
-  question1:
-    "What is the difference between penduline hair mask and other penduline hair creams?",
-  answer1:
-    "Penduline Hair Mask Works Mainly On Hair Moisturizing And Used On Weekly Basis While Penduline Hair Creams Are Mainly Styling & Leave-In Products Can Manage Hair Frizziness And Give It The Shiny Look By Using On Daily Basis.",
   you_have_question: "Do you have any question?",
   blogs: "Blogs",
   new_baby_care: "New baby care",
@@ -219,5 +215,56 @@ export default {
   curly_hero_desc: `Curly hair is a special kind of hair, we at Penduline Curly care more for your beautiful curly hair with our unique products.
   Penduline Curly is a natural and organic shampoo and conditioner for all curly hair types. It is enriched with natural ingredients like grape seed oil, shea butter and argan oil to nourish your curls.
   Our products are gentle enough to be used every day while leaving your curls hydrated, soft and frizz-free.`,
+  curly_qu1: "الفرق بين شامبو كيدز وشامبو كيرلي",
+  curly_ans1: `شامبو بندولين كيدز من عمر يوم , مخصص للشعر العادي ، ويحتوي علي البروتين 
+  شامبو بندولين كيرلي من عمر سنة , مخصص للشعر الكيرلي المجعد او الجاف الذي يحتاج إلى الكثير من الترطيب اللازم للشعر المجعد أو المموج أو الجاف ، خالي من البروتين ف مناسب مع الشعر الحساس من البروتين.`,
+  curly_qu2: "الفرق بين كريم الويفي والشيا",
+  curly_ans2: `كريم بندولين ويفي  مناسب لـــ الشعـر الممـوج " الويفـى " بيخلـى التموجـات محـدده و مترطبـــه و لامعــه" بيحتـوى على زيــوت خفيفــه بتدة مظهـر صحـى لامـع بـدون أى تلزيـق أو تراكــم علـى الشعـر ، خالــى من البروتيــن و مناسـب لـــ الشعـر العالـى أو الحسـاس من البروتيــن
+  كريم بندولين شيا  مناسب لــ الشعـر الكيرلـى شديـد الجفـــاف علشـان طبيعــه الشعـر الكيرلـى بتبقـى جاف وبيعطـى ترطيـب قـوى داخـل الشعرايــه و مش هيسيب تراكـم أو تلزيـق علشـان طبيعـــه الشعـر جـاف جـدا ، زبـده الشيـا هتكـون مناسبــه أكتـر لــ الشعـر الكيرلـى`,
+  curly_qu3: "الفـرق بيــن حمـام كريــم الكيـدز و حمـام الكريــم الكيرلــى",
+  curly_ans3: `حمام الكريم الكيدز يحتوي على بروتين من الشيا , يناسب الشعر ال بحاجه للبروتين  
+  اما حمام كريم بندولين كيرلي فهو خالي من البروتين يحتوي على زيت بذور العنب والارجان ليناسب الشعر الحساس من البروتين, والحمامين كريم لكل انواع الشعر, الفرق في احتياج الشعر للبروتين من عدمه`,
+  curly_qu4: "الفـرق بيـن البلسـم و حمـام الكريــم ",
+  curly_ans4: `بـــ النسبـه لــ البلســم / بيستخـدم بعـد غسيـل الشعــر بـــ الشامبــو لـــ فـك تشابـك الشعــر و سهولــه تسليكــه و تسريحــه 
+  بــــ النسبــه لــــ حمـام الكريــم / بيستخـدم مـن مـره لـــ مرتيـن فـــ الاسبــوع لـــ الترطيـب العميـق لـــ الشعــر`,
+  curly_qu5: "هـل البلسـم مناسـب لـــ جميـع انــواع الشعــر ",
+  curly_ans5: `بـــــ النسبــه لــــ بلســـم بندوليـــن فـــــ مناسب لـــ كل انــواع الشعــر
+  moisturizer  لأنـه
+  هيمنـح الشعـر ترطيب مش هيلفلفـه او يغيـر من طبيعتــــه`,
+  curly_qu6: "هـل المنتجــات بتعمـل الشعـر كيرلــى",
+  curly_ans6: `المنتجات بتحافظ على شكـل الكيرلـى لأن الشعـر الكيرلـى بعد ما بيتعمـل بيهيـش و شكلـه مش بيكـون محـدد و لامــع فــ منتجات بندوليــن بيحافـظ على شكلـه المميـز و بتديلـه الترطيـب`,
+  curly_qu7: "هل البلسم لو لمس فروة الراس هسيبب ضرر",
+  curly_ans7: `بلسـم بندوليـن كيرلـى بتركيبتـه المميـزه فــ خالــى من أى مـاده كيميائيــه ضــاره و مفيهـوش أى مـواد بتسبب أى تراكــم علـى الشعـر ف تسبب تساقط و كمـان غنـى بــ زيــوت طبيعيــه بتمنـح الشعــر ترطيب حقيقــى`,
+  curly_qu8: "ليه شامبو كيرلي مش مناسب للنيو بورن",
+  curly_ans8: `بــــ النسبــه لــــ شامبـــو بندوليــن كيرلــى فـــ مخصص لـــ الاطفــال مـن عمــر الــــ سنــــه 
+  بـــ الاضافــه لــــ ان تركيبــه المنتـج و مكوناتـــه لا تلائـــم احتيــاج الاطفــال حديثــى الــولاده فــى تـلك المرحلــه العمريــه`,
+  baby_qu1:
+    "What is the difference between Penduline Hair Mask and other Penduline Hair Creams?",
+  baby_ans1: `Penduline Hair Mask works mainly on hair moisturizing and used on weekly basis while Penduline hair creams are mainly styling & leave-in products can manage hair frizziness and give it the shiny look by using on daily basis.`,
+  baby_qu2:
+    "Do Penduline Hair oils can be used as a styling or leave-in products?",
+  baby_ans2: `Penduline hair oils are a hair treatment products So,it's better to be used as a oil bath not leave in to avoid any scalp's pores blocking.`,
+  baby_qu3: "Can Penduline hair products be useful for adults?",
+  baby_ans3: `As a 100% natural ingredients, penduline is safe for kids and adults`,
+  baby_qu4: "Do penduline hair creams are used directly on the scalp?",
+  baby_ans4: `Generally, it is very important not to leave any creams nor oils directly on the scalp to avoid any scalp's spores blocking and so,many hair problems can be raised.`,
+  baby_qu5: "Do Penduline shampoo useful for protein treated hair?",
+  baby_ans5: `
+  Of course, as Penduline Shampoo is free of sulfate and enriched with natural oils & hydrolyzed protein that can keep the normal level of protein for a long time.`,
+  baby_qu6: "How can I select the proper hair routine to me and my kids?",
+  baby_ans6: `You can chat with Penduline medical team    or call the hot line 16659`,
+  baby_qu7: "Are there Penduline products specially dedicated for newborn?",
+  baby_ans7: `Yes, Penduline products are very safe to the babies from day one of age and will fulfill all babies’ needs. Here are the products:
+1. Penduline shampoo cleans the babies’ hair and maintain natural hair’s oil moisturization.
+2. Penduline shower gel is the first step of skin care and keeping the skin soft and dry free.
+3. Penduline body lotion maintain ultimate moisturization with a blend of natural moisturizing factors.
+4. Penduline cologne ensures a very soft touch smell, penduline cologne free of alcohol and contains glycerin to keep moisturization.
+5. Penduline water wipes are the safest to clean babies’ body and diaper area as it contains very soft tissue texture does not cause skin redness, as well as 90% water, Glycerin, Panthenol, Aleo Vera. Penduline water wipes are free from alcohol, fragrance and paraben to avoid any skin rash.
+6. Penduline skin baby oil is the first skin oil contains 8 natural oils and free from any mineral oils like paraffin. Penduline skin baby oil ensures moisturaization and protection from dryness and inflammation especially diaper area`,
+  baby_qu8: "Why Penduline water wipes is not a traditional wipes?",
+  baby_ans8: `1. Penduline Water Wipes contain 90% water so one water wipes from Penduline equals 3 traditional water wipes and that water content ensures cleaned and moisturized skin and no need for usage of huge number of traditional wipes.
+2. Penduline water wipes are free from alcohol and fragrance that exist in traditional wipes and cause diaper rash. So, penduline diaper rash is the safest to clean the babies’ skin.
+3. Penduline water wipes are very soft on the skin and do not cause skin redness and contain moisturizers like glycerin, Aleo Vera, calendula and vitamin E) to ensure deep moisturization and skin protection from dryness and inflammation.
+Thus, penduline water wipes is the safest choice to ensure the baby’s skin cleansing and protection`,
   key: "",
 };
