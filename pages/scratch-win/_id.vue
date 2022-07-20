@@ -66,39 +66,28 @@
 
           <section class="w-full bg-slate flex items-center h-[450px]">
             <!-- image section -->
-            <figure v-if="tab == 'image'" class="h-full mx-auto">
+            <figure v-if="tab == 'image'" class="h-full mx-auto max-w-md">
               <img src="~/static/shower.png" class="object-contain h-full mx-auto" alt />
             </figure>
 
             <!-- ingredients section -->
             <figure
-              class="relative flex flex-wrap items-start w-full h-full gap-3 p-1"
-              v-if="tab == 'ingredients'"
+              class="relative flex flex-wrap content-start w-full h-full gap-2 p-3"
+              v-if="tab == 'ingredients' && item.ingredients"
             >
               <img
-                src="~/static/shower.png"
-                class="absolute inset-0 object-contain h-full mx-auto opacity-80 blur-[1px]"
+                v-if="item.images"
+                :src="item.images[0]"
+                class="absolute inset-0 object-contain h-full mx-auto opacity-20 blur-[1px]"
                 alt
               />
-              <template v-for="n in 2">
+              <template v-for="(el,i) in item.ingredients ">
                 <div
-                  data-tip="Chamomile Extract"
-                  class="p-2 rounded-md cursor-pointer bg-opacity-70ed-md tooltip hover:brightness-90 bg-slate-50"
+                  :key="i"
+                  :data-tip="el.name"
+                  class="w-20 h-20 p-2 bg-black rounded-md cursor-pointer bg-opacity-60 tooltip hover:brightness-90"
                 >
-                  <img src="~/static/item1.png" class="w-16" alt />
-                </div>
-
-                <div
-                  data-tip="Chamomile Extract"
-                  class="p-2 rounded-md cursor-pointer bg-opacity-70ed-md tooltip hover:brightness-90 bg-slate-50"
-                >
-                  <img src="~/static/item2.png" class="w-16" alt />
-                </div>
-                <div
-                  data-tip="Chamomile Extract"
-                  class="p-2 rounded-md cursor-pointer bg-opacity-70ed-md tooltip hover:brightness-90 bg-slate-50"
-                >
-                  <img src="~/static/item3.png" class="w-16" alt />
+                  <img :src="el.icon" class="object-contain w-full h-full" :alt="el.name" />
                 </div>
               </template>
             </figure>

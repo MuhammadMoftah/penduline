@@ -24,7 +24,7 @@
           v-if="link"
           tag="button"
           type="button"
-          :to="localePath('/products/25')"
+          :to="link"
           class="block h-12 text-lg capitalize duration-300 rounded-full shadow-2xl lg:h-16 lg:text-2xl px-14 shadow-pink-500 w-fit bottom-20 lg:bottom-24 theme-btn click-scale"
         >{{$t('more_details')}}</NuxtLink>
       </figure>

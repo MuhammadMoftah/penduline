@@ -14,10 +14,10 @@
 
     <section class="-mt-16">
       <HeroSection
-        :title="'Hero Title'"
+        :title="$t('dir') == 'rtl' ? 'بندولين كيرلي شامبو' : 'Penduline Curly Shampoo'"
         :desc="$t('curly_hero_desc')"
-        :img="'imgSRC'"
-        :link="'customLink'"
+        :img="require(`@/static/curly-hero-product.png`)"
+        :link="localePath('/products/96')"
       />
     </section>
 

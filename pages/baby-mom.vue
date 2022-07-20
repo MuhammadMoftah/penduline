@@ -17,7 +17,7 @@
         :title="$t('water_baby_wipes')"
         :desc="$t('baby_hero_desc')"
         :img="require(`@/static/baby-hero-product.png`)"
-        :link="'customLink'"
+        :link="localePath('/products/89')"
       />
     </section>
 

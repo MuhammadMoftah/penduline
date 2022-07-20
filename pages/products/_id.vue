@@ -68,7 +68,7 @@
 
           <section class="w-full bg-slate flex items-center h-[450px]">
             <!-- image section -->
-            <figure v-if="tab == 'image'" class="h-full mx-auto">
+            <figure v-if="tab == 'image'" class="h-full mx-auto max-w-md">
               <img
                 v-if="item.images"
                 :src="item.images[0]"
