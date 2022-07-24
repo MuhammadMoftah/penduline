@@ -19,11 +19,11 @@
     </NuxtLink>
 
     <NuxtLink
-      :to="localePath('/gifts')"
+      :to="localePath('/scratch-win')"
       class="flex flex-col items-center justify-center w-full py-2 font-semibold capitalize duration-300 cursor-pointer"
     >
       <GiftIcon class="w-5 h-5" />
-      <span class="text-xs">{{$t('gifts')}}</span>
+      <span class="text-xs whitespace-pre">{{$t('scratch_win')}}</span>
     </NuxtLink>
 
     <NuxtLink

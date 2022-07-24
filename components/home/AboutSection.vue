@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section class="container relative">
     <div class="flex justify-between mb-8">
       <Title :first="$t('awards_we_got')" />
       <aside class="flex justify-between w-24 rtl:flex-row-reverse" v-if="false">
@@ -17,7 +17,7 @@
         </button>
       </aside>
     </div>
-    <div class="grid grid-cols-1 mt-16 lg:grid-cols-3">
+    <div class="relative grid grid-cols-1 mt-16 lg:grid-cols-3">
       <carousel-3d
         ref="slider"
         class="col-span-2"
