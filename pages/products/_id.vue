@@ -68,7 +68,7 @@
 
           <section class="w-full bg-slate flex items-center h-[450px]">
             <!-- image section -->
-            <figure v-if="tab == 'image'" class="h-full mx-auto max-w-md">
+            <figure v-if="tab == 'image'" class="h-full max-w-md mx-auto">
               <img
                 v-if="item.images"
                 :src="item.images[0]"
@@ -79,7 +79,7 @@
 
             <!-- ingredients section -->
             <figure
-              class="relative flex flex-wrap content-start w-full h-full gap-2 p-3"
+              class="relative flex flex-wrap content-start w-full h-full gap-2 p-3 max-h-[55vh] overflow-auto"
               v-if="tab == 'ingredients'"
             >
               <img
@@ -102,7 +102,7 @@
             <!-- descr section -->
             <p
               v-if="tab == 'description'"
-              class="relative w-11/12 px-10 pb-5 mx-auto text-sm leading-[27px] bg-white pt-14 text-slate-500 line rounded-3xl"
+              class="relative w-11/12 px-10 pb-5 mx-auto text-sm leading-[27px] bg-white pt-14 text-slate-500 line rounded-3xl max-h-[55vh] overflow-auto"
             >
               <img
                 v-if="item.images"
@@ -116,7 +116,7 @@
             <!-- safety section -->
             <div
               v-if="tab == 'safety'"
-              class="relative w-11/12 px-10 pb-5 mx-auto text-sm leading-[27px] bg-white pt-14 text-slate-500 line rounded-3xl"
+              class="relative w-11/12 px-10 pb-5 mx-auto text-sm leading-[27px] bg-white pt-14 text-slate-500 line rounded-3xl max-h-[55vh] overflow-auto"
             >
               <img
                 v-if="item.images"
@@ -132,7 +132,7 @@
             <!-- how to use section -->
             <div
               v-if="tab == 'useage'"
-              class="relative w-11/12 px-10 pb-5 mx-auto text-sm leading-[27px] bg-white pt-14 text-slate-500 line rounded-3xl"
+              class="relative w-11/12 px-10 pb-5 mx-auto text-sm leading-[27px] bg-white pt-14 text-slate-500 line rounded-3xl max-h-[55vh] overflow-auto"
             >
               <img
                 src="~/static/shower.png"

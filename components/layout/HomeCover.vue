@@ -74,7 +74,7 @@
         <NuxtLink
           class="flex items-center justify-center w-full font-semibold text-white bg-right bg-no-repeat click-scale text-opacity-90"
           :style="`background-image: url(${require('~/assets/images/line.svg')})`"
-          :to="localePath('/products')"
+          :to="localePath('/products?filter[categories.id]=2')"
         >
           <img class="w-5 mx-1 lg:mx-4 md:w-auto" src="~/assets/images/skincare.svg" alt />
           {{$t("baby_care")}}
@@ -83,7 +83,7 @@
         <NuxtLink
           class="flex items-center justify-center w-full font-semibold text-white bg-right bg-no-repeat click-scale text-opacity-90"
           :style="`background-image: url(${require('~/assets/images/line.svg')})`"
-          :to="localePath('/products')"
+          :to="localePath('/products?filter[categories.id]=3')"
         >
           <img class="w-5 mx-1 lg:mx-4 md:w-auto" src="~/assets/images/skincare.svg" alt />
           {{$t("mom_care")}}
@@ -92,7 +92,7 @@
         <NuxtLink
           class="flex items-center justify-center w-full font-semibold text-white bg-right bg-no-repeat click-scale text-opacity-90"
           :style="`background-image: url(${require('~/assets/images/line.svg')})`"
-          :to="localePath('/products')"
+          :to="localePath('/products?filter[categories.id]=4')"
         >
           <img class="w-5 mx-1 lg:mx-4 md:w-auto" src="~/assets/images/skincare.svg" alt />
           {{$t("skin_care")}}
@@ -100,7 +100,7 @@
 
         <NuxtLink
           class="flex items-center justify-center w-full font-semibold text-white bg-right bg-no-repeat click-scale text-opacity-90"
-          :to="localePath('/products')"
+          :to="localePath('/products?filter[categories.id]=5')"
         >
           <img class="w-5 mx-1 lg:mx-4 md:w-auto" src="~/assets/images/skincare.svg" alt />
           {{$t("curly_hair_care")}}
